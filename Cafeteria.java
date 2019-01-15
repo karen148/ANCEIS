@@ -12,7 +12,7 @@ public class Cafeteria
     private ArrayList<Producto> productos;
     
     /**
-     * Constructor for objects of class Cafeteriaaaaa
+     * Constructor for objects of class 
      */
     public Cafeteria()
     {
