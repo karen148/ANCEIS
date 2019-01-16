@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 /**
  * Guarda una coleccion de los libros.
@@ -11,8 +12,9 @@ import java.util.ArrayList;
 public class Libreria
 {
     // ArrayList que guarda todos los objetos de tipo Libro.
-    private ArrayList<Libro> libros;
-    private ArrayList<Prestamo> prestamos;
+    private static ArrayList<Libro> libros;
+    private static ArrayList<Prestamo> prestamos;
+    
     /**
      * Constructor for objects of class Libreria
      */

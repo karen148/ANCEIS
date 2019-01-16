@@ -17,8 +17,14 @@ public class Afiliado
     /**
      * Constructor for objects of class Afiliado
      */
-    public Afiliado(String nombre, String codigo, String correo, String telefono)
-    {
+    public Afiliado(String nombre, String codigo, String correo, String telefono){
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+    public String getCodigo(){
+        return codigo;
     }
 
  }
