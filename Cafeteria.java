@@ -24,15 +24,36 @@ public class Cafeteria
      * @param  clave que va a ser buscada
      * @return El producto que es encontrado en la colección. 
      */
-    public Producto BuscarProducto(String clave){
+    public Producto BuscarProducto(String nombre)//String codigo, 
+   {
+        for(int i=0; i<productos.size(); i++)
+        {
+            //String aux1 = productos.get(i).getcodigo();
+            String aux2 = productos.get(i).getnombre();
+            int aux3 = productos.get(i).getcantidad();
+            if(aux2.equals(nombre))
+            {
+                System.out.println(aux2+"-> cantidad: "+aux3+" precio de compra: ");
+                return productos.get(i);
+            }
+            else
+            {
+                System.out.println("El producto no existe");
+            }
+        }
         return null;
     }
+    
     /**
      * Registra un producto de acuerdo a los parametros que ingrese el usuario y lo guarda en la coleccion de productos.
      * @param  atributos del producto. 
      */
-    public void RegistrarProducto(String nombre, String preciocompra, String precioventa){
+    public void RegistrarProducto(String nombre, String codigo, int preciocompra , int precioventa , int cantidad)
+    {
+        Producto nuevoproducto = new Producto(nombre, codigo, preciocompra, precioventa, cantidad);
+        productos.add(nuevoproducto);
     }
+    
     /**
      * Registra la venta de un producto y suma la ganancia de la venta al atributo 'ganancia' de la clase 'Ganancias'.
      * @param  Producto que va a ser vendido. 
