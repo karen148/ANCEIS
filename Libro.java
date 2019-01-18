@@ -14,6 +14,7 @@ public class Libro
     private String autor;
     private String edicion;
     private String editorial;
+    private boolean estado;
 
     /**
      * Constructor for objects of class Libros
@@ -25,6 +26,11 @@ public class Libro
         this.autor = autor;
         this.editorial = editorial;
         this.edicion = edicion;
+        this.estado = true;
+    }
+    
+    public boolean getEstado(){
+        return estado;
     }
     
    

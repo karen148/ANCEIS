@@ -28,18 +28,7 @@ public class Producto
         this.cantidad = cantidad;
         this.codigo = codigo;
     }
-   
-    public void MandarAlerta(){
-        if(cantidad == 0)
-        {
-            System.out.println("No hay producto");
-        }
-        else
-        {
-            System.out.println(nombre+":"+cantidad);
-        }
-    }
-    
+
     public String getcodigo(){
         return codigo;
     }
@@ -47,8 +36,19 @@ public class Producto
     public int getcantidad(){
         return cantidad;
     }
+    public void setcantidad(int cantidad){
+        this.cantidad += cantidad;
+    }
     
     public String getnombre(){
         return nombre;
+    }
+    
+     public int getpcompra(){
+        return preciocompra;
+    }
+    
+     public int getpventa(){
+        return precioventa;
     }
 }

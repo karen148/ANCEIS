@@ -39,22 +39,40 @@ public class Libreria
      * @param  clave que va a ser buscada
      * @return El libro que es encontrado en la colección. 
      */
-    public Libro ConsultarLibro(String clave){
+    public Libro consultarLibro(String clave){
         return null;
     }
     /**
      * Encuentra y elimina el libro de acuerdo a la clave ingresada por el usuario.
      * @param  clave que va a ser buscada 
      */
-    public void EliminarLibro(String clave){
+    public void eliminarLibro(String clave){
     
     }
     /**
      * Crea un prestamo y lo guarda en la coleccion 'prestamos'.
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
      */
-    public void SolicitarPrestamo(Afiliado afiliado, Libro libro){
-    
+    public void solicitarPrestamo(String cod, String titulo){
+        Afiliado estudiante = Afiliaciones.consultarAfiliado(cod);
+        if(estudiante!=null){
+            Libro libro = consultarLibro(titulo);
+            if(libro!= null){
+                if(libro.getEstado()){
+                    Prestamo prestamo = new Prestamo(estudiante,libro);
+                    prestamos.add(prestamo);
+                }
+                else{
+                    System.out.println("El libro esta ocupado");
+                }
+            }
+            else{
+                System.out.println("No se encuentra el libro");
+            }
+        }
+        else{
+            System.out.println("el estudiante no esta afiliado");
+        }
     }
     /**
      * Busca el prestamo que refiera a la clave ingresada por el usuario y lo renueva.

@@ -47,7 +47,7 @@ public class Afiliaciones
      * @param  Codigo del afiliado.
      * @return El afiliado que es encontrado en la colección. 
      */
-    public Afiliado consultarAfiliado(String cod){
+    public static Afiliado consultarAfiliado(String cod){
         for(int i=0;i<afiliados.size();i++){
             String aux = afiliados.get(i).getCodigo();
             if(aux.equals(cod)){
