@@ -34,21 +34,58 @@ public class Libreria
         libros.add(nuevolibro);
   
     }
+    
     /**
      * Encuentra el libro de acuerdo a la clave ingresada por el usuario.
      * @param  clave que va a ser buscada
      * @return El libro que es encontrado en la colección. 
      */
-    public Libro consultarLibro(String clave){
+    public Libro consultarLibro(String titulo){
+        for(int i=0; i<libros.size(); i++)
+        {
+            String aux = libros.get(i).getTitulo();
+            if(aux.equals(titulo))
+            {
+                System.out.println(aux);
+                return libros.get(i);
+            }
+            else
+            {
+                System.out.println("El libro no existe");
+            }
+        }
         return null;
     }
+    
+    public int buscarLibro(String titulo){
+        for(int i=0; i<libros.size(); i++)
+        {
+            String aux2 = libros.get(i).getTitulo();
+            if(aux2.equals(titulo))
+            {
+                return i;
+            }
+        }
+        return 9999;
+    }
+    
     /**
      * Encuentra y elimina el libro de acuerdo a la clave ingresada por el usuario.
      * @param  clave que va a ser buscada 
      */
-    public void eliminarLibro(String clave){
-    
+    public void eliminarLibro(String titulo){
+        int index = buscarLibro(titulo);
+        if(index != 9999)
+        {
+            libros.remove(index);
+            System.out.println("El libro fue eliminado");
+        }
+        else
+        {
+            System.out.println("El libro no se encuentra");
+        }
     }
+    
     /**
      * Crea un prestamo y lo guarda en la coleccion 'prestamos'.
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
@@ -74,6 +111,7 @@ public class Libreria
             System.out.println("el estudiante no esta afiliado");
         }
     }
+    
     /**
      * Busca el prestamo que refiera a la clave ingresada por el usuario y lo renueva.
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 

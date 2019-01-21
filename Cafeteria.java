@@ -52,7 +52,8 @@ public class Cafeteria
      }
      
     }
-   public int buscarProducto(String nombre){
+    
+    public int buscarProducto(String nombre){
         for(int i=0; i<productos.size(); i++)
         {
             //String aux1 = productos.get(i).getcodigo();
@@ -66,7 +67,7 @@ public class Cafeteria
             }
         }
         return 9999;
-   }
+    }
     
     
    /**
@@ -100,11 +101,12 @@ public class Cafeteria
            System.out.println("el producto no existe");
         }
     }
+    
     /**
      * Busca el producto en la coleccion de acuerdo a la clave que ingrese el usuario
      * y modifica sus atributos.
      * @param  Clave del producto que va a ser eliminado. 
      */
-    public void EditarProducto(String clave){
+    public void EditarProducto(String nombre){
     }
 }

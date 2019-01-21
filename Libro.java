@@ -33,5 +33,7 @@ public class Libro
         return estado;
     }
     
-   
+    public String getTitulo(){
+        return titulo;
+    }
 }
