@@ -37,7 +37,14 @@ public class Prestamo
     /**
      * Modifica las fechas del prestamo de modo que aumente su plazo de entrega. 
      */
-    public void RenovarPrestamo(){
+    public void renovar(){
     }
-   
+    
+    public Afiliado getAfiliado(){
+        return afiliado;
+    }
+    
+    public Libro getLibro(){
+        return libro;
+    }
 }

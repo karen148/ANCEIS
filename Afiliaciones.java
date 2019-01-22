@@ -51,7 +51,7 @@ public class Afiliaciones
         for(int i=0;i<afiliados.size();i++){
             String aux = afiliados.get(i).getCodigo();
             if(aux.equals(cod)){
-                System.out.println("el usuario "+aux+ " esta activo");
+                //System.out.println("el usuario "+aux+ " esta activo");
                 return afiliados.get(i);
             }
             else{

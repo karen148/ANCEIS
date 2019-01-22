@@ -41,32 +41,32 @@ public class Libreria
      * @return El libro que es encontrado en la colección. 
      */
     public Libro consultarLibro(String titulo){
-        for(int i=0; i<libros.size(); i++)
-        {
+        for(int i=0; i<libros.size(); i++){
             String aux = libros.get(i).getTitulo();
-            if(aux.equals(titulo))
-            {
-                System.out.println(aux);
+            if(aux.equals(titulo)){
                 return libros.get(i);
             }
-            else
-            {
+            else{
                 System.out.println("El libro no existe");
             }
         }
         return null;
     }
     
-    public int buscarLibro(String titulo){
-        for(int i=0; i<libros.size(); i++)
-        {
-            String aux2 = libros.get(i).getTitulo();
-            if(aux2.equals(titulo))
-            {
-                return i;
+    public void imprimirLibro(String titulo){
+        for(int i=0; i<libros.size(); i++){
+            String titl = libros.get(i).getTitulo();
+            if(titl.equals(titulo)){
+                Libro libro = libros.get(i);
+                System.out.println(titl);
+                System.out.println(libro.getEstado());
+
+            }
+            else{
+                System.out.println("El libro no existe");
             }
         }
-        return 9999;
+
     }
     
     /**
@@ -74,9 +74,10 @@ public class Libreria
      * @param  clave que va a ser buscada 
      */
     public void eliminarLibro(String titulo){
-        int index = buscarLibro(titulo);
-        if(index != 9999)
+        Libro libro = consultarLibro(titulo);
+        if(libro!=null)
         {
+            int index = libros.indexOf(libro);
             libros.remove(index);
             System.out.println("El libro fue eliminado");
         }
@@ -94,13 +95,15 @@ public class Libreria
         Afiliado estudiante = Afiliaciones.consultarAfiliado(cod);
         if(estudiante!=null){
             Libro libro = consultarLibro(titulo);
-            if(libro!= null){
+            if(libro!=null){
                 if(libro.getEstado()){
                     Prestamo prestamo = new Prestamo(estudiante,libro);
                     prestamos.add(prestamo);
+                    libros.get(libros.indexOf(libro)).setEstado(false);
+                    System.out.println("El prestamo fue un exito");
                 }
                 else{
-                    System.out.println("El libro esta ocupado");
+                    System.out.println("El libro no se encuentra disponible");
                 }
             }
             else{
@@ -116,8 +119,13 @@ public class Libreria
      * Busca el prestamo que refiera a la clave ingresada por el usuario y lo renueva.
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
      */
-    public void RenovarPrestamo(String claveprestamo){
+    public void RenovarPrestamo(String cod, String titulo){ 
+        for(Prestamo p: prestamos){
+           if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
+               p.renovar();
+            }
+        }
     }
-    
+
    
 }
