@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 /**
  * En cafeteria se va encontrar una lista de los productos con 
  * sus respectivos precios de venta.
@@ -6,6 +5,8 @@ import java.util.ArrayList;
  * @author (Chia Andres, Gonzalez Karen) 
  * @version (AINCEIS.v1)
  */
+import java.util.ArrayList;
+import java.util.Scanner;
 public class Cafeteria
 {
     // instance variables - replace the example below with your own
@@ -86,6 +87,7 @@ public class Cafeteria
     public void registrarVenta(String nombre, int cantidad){
         Producto prod = productos.get(buscarProducto(nombre));
         prod.setcantidad(-cantidad);
+        Ganancias.SumarGanancia(prod.getpventa());
     }
     /**
      * Elimina un producto de la coleccion de acuerdo a la clave que ingrese el usuario.
@@ -107,6 +109,27 @@ public class Cafeteria
      * y modifica sus atributos.
      * @param  Clave del producto que va a ser eliminado. 
      */
-    public void EditarProducto(String nombre){
+    public void EditarProducto(String nomb){
+        int index = buscarProducto(nomb);
+        Producto prod = productos.get(index);
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Codigo: ");
+        String codigo = sc.next();
+        System.out.print("Nombre: ");
+        String nombre = sc.next();
+        System.out.print("Precio compra: ");
+        int pcompra = sc.nextInt();
+        System.out.print("Precio venta: ");
+        int pventa = sc.nextInt();
+        System.out.print("Cantidad: ");
+        int cant = sc.nextInt();
+        
+        productos.get(index).setcodigo(codigo);
+        productos.get(index).setnombre(nombre);
+        productos.get(index).setpcompra(pcompra);
+        productos.get(index).setpventa(pventa);
+        productos.get(index).editcantidad(cant);
+        System.out.println("El producto fue editado correctamente");
     }
 }

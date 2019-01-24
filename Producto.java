@@ -36,10 +36,7 @@ public class Producto
     public int getcantidad(){
         return cantidad;
     }
-    public void setcantidad(int cantidad){
-        this.cantidad += cantidad;
-    }
-    
+       
     public String getnombre(){
         return nombre;
     }
@@ -50,5 +47,25 @@ public class Producto
     
      public int getpventa(){
         return precioventa;
+    }
+    
+         public void setcantidad(int cantidad){
+        this.cantidad += cantidad;
+    }
+    
+     public void setcodigo(String codigo){
+        this.codigo = codigo;
+    }
+     public void setnombre(String nombre){
+        this.nombre = nombre;
+    }
+     public void editcantidad(int cantidad){
+        this.cantidad = cantidad;
+    }
+     public void setpventa(int pventa){
+        precioventa = pventa;
+    }
+     public void setpcompra(int pcompra){
+        preciocompra = pcompra;
     }
 }

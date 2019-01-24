@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class Afiliaciones
 {
     // instance variables - replace the example below with your own
-    private static ArrayList<Afiliado> afiliados;
+    private static ArrayList<Afiliado> afiliados = new ArrayList<Afiliado>();
     private static Afiliado[] casilleros = new Afiliado[20];
     
     public Afiliaciones(){
-        afiliados = new ArrayList<Afiliado>();
     }
      
     /**
@@ -43,11 +42,16 @@ public class Afiliaciones
      * @return El afiliado que es encontrado en la colección. 
      */
     public static Afiliado buscarAfiliado(String cod){
-        for(int i=0;i<afiliados.size();i++){
-            String aux = afiliados.get(i).getCodigo();
-            if(aux.equals(cod)){
-                //System.out.println("el usuario "+aux+ " esta activo");
-                return afiliados.get(i);
+        if(afiliados.size()==0){
+            System.out.println("No hay afiliados registrados");
+        }
+        else{
+            for(int i=0;i<afiliados.size();i++){
+                String aux = afiliados.get(i).getCodigo();
+                if(aux.equals(cod)){
+                    //System.out.println("el usuario "+aux+ " esta activo");
+                    return afiliados.get(i);
+                }
             }
         }
         System.out.println("el usuario "+cod+" no se encuentra");
