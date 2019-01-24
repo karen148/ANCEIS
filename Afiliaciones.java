@@ -36,6 +36,7 @@ public class Afiliaciones
             afiliados.remove(index);
         }     
     }
+    
     /**
      * Encuentra el afiliado de acuerdo al codigo ingresada por el usuario.
      * @param  Codigo del afiliado.
