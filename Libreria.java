@@ -92,7 +92,7 @@ public class Libreria
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
      */
     public void solicitarPrestamo(String cod, String titulo){
-        Afiliado estudiante = Afiliaciones.consultarAfiliado(cod);
+        Afiliado estudiante = Afiliaciones.buscarAfiliado(cod);
         if(estudiante!=null){
             Libro libro = consultarLibro(titulo);
             if(libro!=null){

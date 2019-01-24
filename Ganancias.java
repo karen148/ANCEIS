@@ -15,18 +15,16 @@ public class Ganancias
     /**
      * Constructor for objects of class TotalGanancias
      */
-    public Ganancias()
-    {
+    public Ganancias(){
         // initialise instance variables
         TotalGanancia = 0;
-        
-
     }
 
     /**
      * Suma las ganancias obtenidas por ventas, afiliaciones, casilleros y multas.
      */
-    public void SumarGanancia(int ganancia)
+    public static void SumarGanancia(int ganancia)
     {
+        TotalGanancia += ganancia;
     }
 }

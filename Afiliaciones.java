@@ -11,6 +11,7 @@ public class Afiliaciones
     // instance variables - replace the example below with your own
     private static ArrayList<Afiliado> afiliados;
     private static Afiliado[] casilleros = new Afiliado[20];
+    
     public Afiliaciones(){
         afiliados = new ArrayList<Afiliado>();
     }
@@ -29,40 +30,32 @@ public class Afiliaciones
      * @param  codigo del afiliado.
      */
     public void eliminarAfiliado(String cod){
-        for(int i=0;i<afiliados.size();i++){
-            String aux = afiliados.get(i).getCodigo();
-            if(aux.equals(cod)){
-                System.out.println("el usuario "+aux+" ha sido eliminado");
-                afiliados.remove(i);
-            }
-            else{
-                System.out.println("el usuario "+aux+" no se encuentra");
-            }
-        }
-        
-        
+        Afiliado afiliado = buscarAfiliado(cod);
+        if(afiliado!=null){
+            int index = afiliados.indexOf(afiliado);
+            System.out.println("El usuario fue removido con exito");
+            afiliados.remove(index);
+        }     
     }
     /**
      * Encuentra el afiliado de acuerdo al codigo ingresada por el usuario.
      * @param  Codigo del afiliado.
      * @return El afiliado que es encontrado en la colección. 
      */
-    public static Afiliado consultarAfiliado(String cod){
+    public static Afiliado buscarAfiliado(String cod){
         for(int i=0;i<afiliados.size();i++){
             String aux = afiliados.get(i).getCodigo();
             if(aux.equals(cod)){
                 //System.out.println("el usuario "+aux+ " esta activo");
                 return afiliados.get(i);
             }
-            else{
-                System.out.println("el usuario "+aux+" no se encuentra");
-            }
         }
+        System.out.println("el usuario "+cod+" no se encuentra");
         return null;
     }
       
     public boolean registrarCasillero(String cod, int numero){
-        Afiliado afiliado = consultarAfiliado(cod);
+        Afiliado afiliado = buscarAfiliado(cod);
         if(casilleros[numero] == null){
             casilleros[numero] = afiliado;
             return true;
