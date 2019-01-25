@@ -26,6 +26,10 @@ public class Ganancias
     public static void SumarGanancia(int ganancia)
     {
         TotalGanancia += ganancia;
+
         System.out.println("Ganancias: "+TotalGanancia);
+
+        System.out.println("Ganancia: "+TotalGanancia);
+
     }
 }
