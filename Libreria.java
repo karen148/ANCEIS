@@ -19,12 +19,6 @@ public class Libreria
      * Constructor for objects of class Libreria
      */
     public Libreria(){
-        Libro l1 = new Libro("Libro azul","Juan","Cuarta","Planeta");
-        Libro l2 = new Libro("Libro rojo","Carlos","Quinta","Planeta");
-        Libro l3 = new Libro("Libro negro","Diego","Segunda","Planeta");
-        libros.add(l1);
-        libros.add(l2);
-        libros.add(l3);
         
     }
     
@@ -32,7 +26,7 @@ public class Libreria
      * Registra un libro con los atributos que ingrese el usuario y lo guarda en la coleccion 'libros'.
      * @param  atributos del libro. 
      */
-    public void RegistrarLibro(String titulo, String autor, String edicion, String editorial){
+    public void registrarLibro(String titulo, String autor, String edicion, String editorial){
         Libro nuevolibro = new Libro(titulo,autor,edicion,editorial);
         libros.add(nuevolibro);
   
@@ -49,28 +43,10 @@ public class Libreria
             if(aux.equals(titulo)){
                 return lb;
             }
-            else{
-                System.out.println("El libro no existe");
-            }
         }
         return null;
     }
-    
-    public void imprimirLibro(String titulo){
-        for(int i=0; i<libros.size(); i++){
-            String titl = libros.get(i).getTitulo();
-            if(titl.equals(titulo)){
-                Libro libro = libros.get(i);
-                System.out.println(titl);
-                System.out.println(libro.getEstado());
-
-            }
-            else{
-                System.out.println("El libro no existe");
-            }
-        }
-
-    }
+  
     
     /**
      * Encuentra y elimina el libro de acuerdo a la clave ingresada por el usuario.
@@ -118,17 +94,17 @@ public class Libreria
         }
     }
     
-    public void prueba(Afiliado afiliado){
-        System.out.println("Afiliado nombre :"+afiliado.getNombre());
-    }
     
     public void consultarPrestamo(String cod, String titulo){
         for(Prestamo p: prestamos){
-           if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
+           if(p.getAfiliado().getCodigo().equals(cod) && p.getLibro().getTitulo().equals(titulo)){
                System.out.println("Titulo: "+p.getLibro().getTitulo());
                System.out.println("Fecha de prestamo: "+p.getFecha());
                System.out.println("Fecha de entrega: "+p.getFecha());
                System.out.println("Multa total: "+p.getMulta());
+            }
+            else{
+                System.out.println("El prestamo no se encuentra");
             }
         }
     }
@@ -152,5 +128,18 @@ public class Libreria
             }
         }
     }
- 
+    
+    public void listarLibros(){
+        for(Libro lb : libros){
+            imprimirLibro(lb);
+        }
+    }
+    
+    public void imprimirLibro(Libro lb){
+        System.out.println("Titulo: "+lb.getTitulo());
+        System.out.println("Autor: "+lb.getAutor());
+        System.out.println("Edición: "+lb.getEdicion());
+        System.out.println("Editorial: "+lb.getEditorial());
+        System.out.println("\n");
+    }
 }

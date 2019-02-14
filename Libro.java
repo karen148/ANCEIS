@@ -36,7 +36,20 @@ public class Libro
         this.estado = estado;
     }
     
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
+    }
     public String getTitulo(){
         return titulo;
     }
+    public String getAutor(){
+        return autor;
+    }
+    public String getEdicion(){
+        return edicion;
+    }
+    public String getEditorial(){
+        return editorial;
+    }
+    
 }

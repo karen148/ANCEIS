@@ -38,16 +38,17 @@ public class Demo
         
         System.out.println("Aqui creamos una instancia de Cafeteria y agregamos 3 productos \n");
         Libreria libreria = new Libreria();
-        cafeteria.registrarProducto("Galletas","110",15000,500,40);;
-        cafeteria.registrarProducto("Papas","111",20000,800,40);
-        cafeteria.registrarProducto("Maní","112",25000,1000,40);
-        cafeteria.listarProductos();
+        libreria.registrarLibro("Libro azul","Juan","Cuarta","Planeta");
+        libreria.registrarLibro("Libro rojo","Carlos","Quinta","Planeta");
+        libreria.registrarLibro("Libro negro","Diego","Segunda","Planeta");
+        libreria.listarLibros();
         System.out.println("---------//------------//--------------//-------");
-        System.out.println("Aqui le cambiamos el precio a las galletas, \n el nombre a las Papas y eliminamos el Maní");
-        cafeteria.buscarProducto("Galletas").setpventa(800);
-        cafeteria.buscarProducto("Papas").setNombre("Papa pobre");
-        cafeteria.eliminarProducto("Maní");
-        cafeteria.listarProductos();
+        System.out.println("Aqui le cambiamos el nombre al Libro Azul, elminamos el Libro Rojo \n y solicitamos un prestamo con el Libro negro");
+        libreria.consultarLibro("Libro azul").setTitulo("Libro verde");
+        libreria.eliminarLibro("Libro rojo");
+        libreria.solicitarPrestamo("221","Libro negro");
+        libreria.listarLibros();
+        libreria.consultarPrestamo("221","Libro negro");
         System.out.println("---------//------------//--------------//-------");
     }
     
