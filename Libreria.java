@@ -20,8 +20,11 @@ public class Libreria
      */
     public Libreria(){
         Libro l1 = new Libro("Libro azul","Juan","Cuarta","Planeta");
-        Libro l2 = new Libro("Libro azul","Juan","Cuarta","Planeta");
-        Libro l3 = new Libro("Libro azul","Juan","Cuarta","Planeta");
+        Libro l2 = new Libro("Libro rojo","Carlos","Quinta","Planeta");
+        Libro l3 = new Libro("Libro negro","Diego","Segunda","Planeta");
+        libros.add(l1);
+        libros.add(l2);
+        libros.add(l3);
         
     }
     

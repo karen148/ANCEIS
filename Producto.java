@@ -29,15 +29,15 @@ public class Producto
         this.codigo = codigo;
     }
 
-    public String getcodigo(){
+    public String getCodigo(){
         return codigo;
     }
     
-    public int getcantidad(){
+    public int getCantidad(){
         return cantidad;
     }
        
-    public String getnombre(){
+    public String getNombre(){
         return nombre;
     }
     
@@ -49,17 +49,17 @@ public class Producto
         return precioventa;
     }
     
-         public void setcantidad(int cantidad){
+    public void setCantidad(int cantidad){
         this.cantidad += cantidad;
     }
     
-     public void setcodigo(String codigo){
+     public void setCodigo(String codigo){
         this.codigo = codigo;
     }
-     public void setnombre(String nombre){
+     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-     public void editcantidad(int cantidad){
+     public void editCantidad(int cantidad){
         this.cantidad = cantidad;
     }
      public void setpventa(int pventa){

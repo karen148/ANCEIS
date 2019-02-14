@@ -15,7 +15,7 @@ public class Afiliaciones
     private final int valorantiguos = 8000;
     private final int valornuevos = 10000;
     public Afiliaciones(){
-        
+
     }
      
     /**
@@ -55,11 +55,11 @@ public class Afiliaciones
             System.out.println("No hay afiliados registrados");
         }
         else{
-            for(int i=0;i<afiliados.size();i++){
-                String aux = afiliados.get(i).getCodigo();
+            for(Afiliado af : afiliados){
+                String aux = af.getCodigo();
                 if(aux.equals(cod)){
-                    System.out.println("el usuario "+aux+ " esta activo");
-                    return afiliados.get(i);
+                    //System.out.println("el usuario "+aux+ " esta activo");
+                    return af;
                 }
             }
         }
@@ -86,5 +86,19 @@ public class Afiliaciones
                 System.out.println(i);
             }
         }
+    }
+    
+    public void listarAfiliados(){
+        for(Afiliado af : afiliados){
+            imprimirAfiliado(af);
+        }
+    }
+    
+    public void imprimirAfiliado(Afiliado af){
+        System.out.println("Nombre: "+af.getNombre());
+        System.out.println("Codigo: "+af.getCodigo());
+        System.out.println("Correo: "+af.getCorreo());
+        System.out.println("Telefono: "+af.getTelefono());
+        System.out.println("\n");
     }
 }

@@ -17,13 +17,7 @@ public class Cafeteria
      */
     public Cafeteria()
     {
-        productos = new ArrayList<Producto>();
-        Producto p1 = new Producto("Galletas","110",15000,500,40);
-        Producto p2 = new Producto("Papas","111",20000,800,40);
-        Producto p3 = new Producto("Maní","112",25000,1000,40);
-        productos.add(p1);
-        productos.add(p2);
-        productos.add(p3);
+      productos = new ArrayList<Producto>();   
     }
 
     /**
@@ -37,8 +31,8 @@ public class Cafeteria
         for(int i=0; i<productos.size(); i++)
         {
             //String aux1 = productos.get(i).getcodigo();
-            String aux2 = productos.get(i).getnombre();
-            int cant = productos.get(i).getcantidad();
+            String aux2 = productos.get(i).getNombre();
+            int cant = productos.get(i).getCantidad();
             int pcompra = productos.get(i).getpcompra();
             int pventa = productos.get(i).getpventa();
             if(aux2.equals(nombre))
@@ -62,7 +56,7 @@ public class Cafeteria
     
     public Producto buscarProducto(String nombre){
         for(Producto p : productos){
-            String aux = p.getnombre();
+            String aux = p.getNombre();
             if(aux.equals(nombre))
             {
                 return p;
@@ -87,7 +81,7 @@ public class Cafeteria
      */
     public void registrarVenta(String nombre, int cantidad){
         Producto prod = buscarProducto(nombre);
-        prod.setcantidad(-cantidad);
+        prod.setCantidad(-cantidad);
         Ganancias.SumarGanancia(prod.getpventa());
     }
     /**
@@ -96,7 +90,7 @@ public class Cafeteria
      */
     public void eliminarProducto(String nombre){
         Producto p = buscarProducto(nombre);
-        if(p == null){
+        if(p != null){
             int index = productos.indexOf(p);
             productos.remove(index);
             System.out.println("el producto fue eliminado correctamente");
@@ -106,12 +100,27 @@ public class Cafeteria
         }
     }
     
+    public void listarProductos(){
+        for(Producto pd : productos){
+            imprimirProducto(pd);
+        }
+    }
+    
+    public void imprimirProducto(Producto pd){
+        System.out.println("Nombre: "+pd.getNombre());
+        System.out.println("Codigo: "+pd.getCodigo());
+        System.out.println("Precio compra: "+pd.getpcompra());
+        System.out.println("Precio venta: "+pd.getpventa());
+        System.out.println("Cantidad: "+pd.getCantidad());
+        System.out.println("\n");
+    }
+    
     /**
      * Busca el producto en la coleccion de acuerdo a la clave que ingrese el usuario
      * y modifica sus atributos.
      * @param  Clave del producto que va a ser eliminado. 
      */
-    public void EditarProducto(String nomb){
+    /*public void EditarProducto(String nomb){
         Producto prod = buscarProducto(nomb);
         int index = productos.indexOf(prod);
         Scanner sc = new Scanner(System.in);
@@ -133,5 +142,5 @@ public class Cafeteria
         productos.get(index).setpventa(pventa);
         productos.get(index).editcantidad(cant);
         System.out.println("El producto fue editado correctamente");
-    }
+    }*/
 }
