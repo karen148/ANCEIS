@@ -18,12 +18,18 @@ public class Cafeteria
     public Cafeteria()
     {
         productos = new ArrayList<Producto>();
+        Producto p1 = new Producto("Galletas","110",15000,500,40);
+        Producto p2 = new Producto("Papas","111",20000,800,40);
+        Producto p3 = new Producto("Maní","112",25000,1000,40);
+        productos.add(p1);
+        productos.add(p2);
+        productos.add(p3);
     }
 
     /**
      * Encuentra y muestra el producto de acuerdo a la clave ingresada por el usuario.
      * @param  clave que va a ser buscada
-     * @return El producto que es encontrado en la colecciÃ³n. 
+     * @return El producto que es encontrado en la colección. 
      */
     public void consultarProducto(String nombre)//String codigo, 
    {
@@ -54,20 +60,15 @@ public class Cafeteria
      
     }
     
-    public int buscarProducto(String nombre){
-        for(int i=0; i<productos.size(); i++)
-        {
-            //String aux1 = productos.get(i).getcodigo();
-            String aux2 = productos.get(i).getnombre();
-            int cant = productos.get(i).getcantidad();
-            int pcompra = productos.get(i).getpcompra();
-            int pventa = productos.get(i).getpventa();
-            if(aux2.equals(nombre))
+    public Producto buscarProducto(String nombre){
+        for(Producto p : productos){
+            String aux = p.getnombre();
+            if(aux.equals(nombre))
             {
-                return i;
+                return p;
             }
         }
-        return 9999;
+        return null;
     }
     
     
@@ -85,7 +86,7 @@ public class Cafeteria
      * @param  Producto que va a ser vendido. 
      */
     public void registrarVenta(String nombre, int cantidad){
-        Producto prod = productos.get(buscarProducto(nombre));
+        Producto prod = buscarProducto(nombre);
         prod.setcantidad(-cantidad);
         Ganancias.SumarGanancia(prod.getpventa());
     }
@@ -94,10 +95,11 @@ public class Cafeteria
      * @param  Clave del producto que va a ser eliminado. 
      */
     public void eliminarProducto(String nombre){
-        int index = buscarProducto(nombre);
-        if(index != 9999){
-        productos.remove(index);
-        System.out.println("el producto fue eliminado correctamente");
+        Producto p = buscarProducto(nombre);
+        if(p == null){
+            int index = productos.indexOf(p);
+            productos.remove(index);
+            System.out.println("el producto fue eliminado correctamente");
         }
        else{
            System.out.println("el producto no existe");
@@ -110,8 +112,8 @@ public class Cafeteria
      * @param  Clave del producto que va a ser eliminado. 
      */
     public void EditarProducto(String nomb){
-        int index = buscarProducto(nomb);
-        Producto prod = productos.get(index);
+        Producto prod = buscarProducto(nomb);
+        int index = productos.indexOf(prod);
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Codigo: ");

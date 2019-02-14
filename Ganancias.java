@@ -29,7 +29,5 @@ public class Ganancias
 
         System.out.println("Ganancias: "+TotalGanancia);
 
-        System.out.println("Ganancia: "+TotalGanancia);
-
     }
 }

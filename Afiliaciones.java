@@ -10,9 +10,12 @@ public class Afiliaciones
 {
     // instance variables - replace the example below with your own
     private static ArrayList<Afiliado> afiliados = new ArrayList<Afiliado>();
+    private static ArrayList<Afiliado> afiliadosantiguos = new ArrayList<Afiliado>();
     private static Afiliado[] casilleros = new Afiliado[20];
-    
+    private final int valorantiguos = 8000;
+    private final int valornuevos = 10000;
     public Afiliaciones(){
+        
     }
      
     /**
@@ -22,8 +25,13 @@ public class Afiliaciones
     public void registrarAfiliado(String nombre, String codigo, String correo, String telefono){
         Afiliado nuevoafiliado = new Afiliado(nombre,codigo,correo,telefono);
         afiliados.add(nuevoafiliado);
-  
-    }
+        if(afiliadosantiguos.contains(nuevoafiliado)){
+            Ganancias.SumarGanancia(valorantiguos);
+        }
+        else{
+            Ganancias.SumarGanancia(valornuevos);
+        }
+      }
     /**
      * Encuentra y elimina el afiliado de acuerdo al codigo ingresada por el usuario.
      * @param  codigo del afiliado.
@@ -50,7 +58,7 @@ public class Afiliaciones
             for(int i=0;i<afiliados.size();i++){
                 String aux = afiliados.get(i).getCodigo();
                 if(aux.equals(cod)){
-                    //System.out.println("el usuario "+aux+ " esta activo");
+                    System.out.println("el usuario "+aux+ " esta activo");
                     return afiliados.get(i);
                 }
             }

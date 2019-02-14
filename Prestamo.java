@@ -1,5 +1,5 @@
 
-import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -16,10 +16,8 @@ public class Prestamo
     // instance variables - replace the example below with your own
     private Libro libro;
     private Afiliado afiliado;
-    private String dia;
-    private String mes;
-    private String año;
-
+    private Date fechaprestamo;
+    private int multa;
     /**
      * Constructor para la clase Prestamo
      * 
@@ -29,15 +27,13 @@ public class Prestamo
         // initialise instance variables
         this.afiliado = afiliado;
         this.libro = libro;
-        Calendar c1 = Calendar.getInstance();
-        dia = Integer.toString(c1.get(Calendar.DATE));
-        mes = Integer.toString(c1.get(Calendar.MONTH));
-        año = Integer.toString(c1.get(Calendar.YEAR));
+        fechaprestamo = new Date();
     }
     /**
      * Modifica las fechas del prestamo de modo que aumente su plazo de entrega. 
      */
     public void renovar(){
+        
     }
     
     public Afiliado getAfiliado(){
@@ -46,5 +42,34 @@ public class Prestamo
     
     public Libro getLibro(){
         return libro;
+    }
+    
+    
+    /** 
+     * El metodo se ejecuta al iniciar el programa.
+    **/
+    public void checkmulta(){
+        Date fechaactual = new Date();
+        int diferencia =(int) ((fechaactual.getTime()-fechaprestamo.getTime())/86400000);
+        if(diferencia >= 15){
+            sumarmulta(1000);
+        }
+    }
+    
+    public Date getFecha(){
+        return fechaprestamo;
+    }
+    
+    public void sumarmulta(int multa){
+        this.multa += multa;
+    }
+    public int getMulta(){
+        return multa;
+    }
+    public void setmulta(int multa){
+        this.multa=multa;
+    }
+    public void pagarmulta(){
+       setmulta(0);
     }
 }

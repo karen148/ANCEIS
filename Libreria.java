@@ -12,17 +12,17 @@ import java.util.ArrayList;
 public class Libreria
 {
     // ArrayList que guarda todos los objetos de tipo Libro.
-    private static ArrayList<Libro> libros;
-    private static ArrayList<Prestamo> prestamos;
+    private static ArrayList<Libro> libros = new ArrayList<Libro>();;
+    private static ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
     
     /**
      * Constructor for objects of class Libreria
      */
-    public Libreria()
-    {
-        // initialise instance variables
-        libros = new ArrayList<Libro>();
-        prestamos = new ArrayList<Prestamo>();
+    public Libreria(){
+        Libro l1 = new Libro("Libro azul","Juan","Cuarta","Planeta");
+        Libro l2 = new Libro("Libro azul","Juan","Cuarta","Planeta");
+        Libro l3 = new Libro("Libro azul","Juan","Cuarta","Planeta");
+        
     }
     
     /**
@@ -41,10 +41,10 @@ public class Libreria
      * @return El libro que es encontrado en la colección. 
      */
     public Libro consultarLibro(String titulo){
-        for(int i=0; i<libros.size(); i++){
-            String aux = libros.get(i).getTitulo();
+        for(Libro lb: libros){
+            String aux = lb.getTitulo();
             if(aux.equals(titulo)){
-                return libros.get(i);
+                return lb;
             }
             else{
                 System.out.println("El libro no existe");
@@ -92,7 +92,7 @@ public class Libreria
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
      */
     public void solicitarPrestamo(String cod, String titulo){
-        Afiliado estudiante = Afiliaciones.buscarAfiliado(cod);
+        Afiliado estudiante = Afiliaciones.buscarAfiliado(cod); 
         if(estudiante!=null){
             Libro libro = consultarLibro(titulo);
             if(libro!=null){
@@ -115,17 +115,39 @@ public class Libreria
         }
     }
     
+    public void prueba(Afiliado afiliado){
+        System.out.println("Afiliado nombre :"+afiliado.getNombre());
+    }
+    
+    public void consultarPrestamo(String cod, String titulo){
+        for(Prestamo p: prestamos){
+           if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
+               System.out.println("Titulo: "+p.getLibro().getTitulo());
+               System.out.println("Fecha de prestamo: "+p.getFecha());
+               System.out.println("Fecha de entrega: "+p.getFecha());
+               System.out.println("Multa total: "+p.getMulta());
+            }
+        }
+    }
     /**
      * Busca el prestamo que refiera a la clave ingresada por el usuario y lo renueva.
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
      */
-    public void RenovarPrestamo(String cod, String titulo){ 
+    public void renovarPrestamo(String cod, String titulo){ 
         for(Prestamo p: prestamos){
            if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
                p.renovar();
             }
         }
     }
-
-   
+    
+    public void pagarMulta(String cod, String titulo){
+        for(Prestamo p: prestamos){
+           if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
+               p.pagarmulta();
+               System.out.println("La multa se pago satisfactoriamente");
+            }
+        }
+    }
+ 
 }

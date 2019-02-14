@@ -26,5 +26,8 @@ public class Afiliado
     public String getCodigo(){
         return codigo;
     }
+    public String getNombre(){
+        return nombre;
+    }
 
  }
