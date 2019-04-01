@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 /**
  * La clase libro tiene como atributos el titulo, el autor, la edicion
  * y la editorial, los cuales son necesarios para clasificar el libro en el inventario.

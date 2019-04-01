@@ -6,7 +6,7 @@
  * @version (AINCEIS.v1)
  */
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
 public class Cafeteria
 {
     // instance variables - replace the example below with your own
