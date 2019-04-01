@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Prestamo
+comment0.text=\r\n\ La\ clase\ prestamo\ relaciona\ al\ afiliado\ que\ solicita\r\n\ el\ prestamo\ y\ el\ libro\ que\ fue\ prestado\ de\ manera\ que\ \r\n\ guarda\ un\ objeto\ de\ tipo\ libro\ y\ un\ objeto\ de\ tipo\ afiliado\r\n\ \r\n\ \r\n\ @author\ (Chia\ Andres,\ Gonzalez\ Karen)\ \r\n\ @version\ (AINCeis.v1)\r\n
+comment1.params=afiliado\ libro
+comment1.target=Prestamo(Afiliado,\ Libro)
+comment1.text=\r\n\ Constructor\ para\ la\ clase\ Prestamo\r\n\ \r\n
+comment10.params=
+comment10.target=void\ pagarmulta()
+comment2.params=
+comment2.target=void\ renovar()
+comment2.text=\r\n\ Modifica\ las\ fechas\ del\ prestamo\ de\ modo\ que\ aumente\ su\ plazo\ de\ entrega.\ \r\n
+comment3.params=
+comment3.target=Afiliado\ getAfiliado()
+comment4.params=
+comment4.target=Libro\ getLibro()
+comment5.params=
+comment5.target=void\ checkmulta()
+comment5.text=\ \r\n\ El\ metodo\ se\ ejecuta\ al\ iniciar\ el\ programa.\r\n
+comment6.params=
+comment6.target=java.util.Date\ getFecha()
+comment7.params=multa
+comment7.target=void\ sumarmulta(int)
+comment8.params=
+comment8.target=int\ getMulta()
+comment9.params=multa
+comment9.target=void\ setmulta(int)
+numComments=11

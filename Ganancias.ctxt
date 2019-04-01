@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Ganancias
+comment0.text=\r\n\ Ganancias\ guarda\ las\ ganancias\ de\ los\ productos\ vendidos,\ las\ multas\ de\ los\ \r\n\ libros\ prestados,\ afiliaciones\ y\ casilleros.\r\n\ \r\n\ @author\ (Chia\ Andres,Gonzalez\ Karen)\ \r\n\ @version\ (AINCeis.v1)\r\n
+comment1.params=
+comment1.target=Ganancias()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TotalGanancias\r\n
+comment2.params=ganancia
+comment2.target=void\ SumarGanancia(int)
+comment2.text=\r\n\ Suma\ las\ ganancias\ obtenidas\ por\ ventas,\ afiliaciones,\ casilleros\ y\ multas.\r\n
+numComments=3

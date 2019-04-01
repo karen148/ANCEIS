@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Afiliado
+comment0.text=\r\n\ En\ la\ clase\ Afiliado\ se\ registra\ los\ datos\ de\ la\ personas\ que\ se\ van\ afiliar\ al\ \r\n\ CEIS.\r\n\ \r\n\ @author\ (Chia\ Andres,Gonz\u00C3\u00A1lez\ Karen)\ \r\n\ @version\ (AINCeis.v1)\r\n
+comment1.params=nombre\ codigo\ correo\ telefono
+comment1.target=Afiliado(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Afiliado\r\n
+comment2.params=
+comment2.target=java.lang.String\ getCodigo()
+comment3.params=
+comment3.target=java.lang.String\ getNombre()
+comment4.params=
+comment4.target=java.lang.String\ getCorreo()
+comment5.params=
+comment5.target=java.lang.String\ getTelefono()
+comment6.params=correo
+comment6.target=void\ setCorreo(java.lang.String)
+comment7.params=telefono
+comment7.target=void\ setTelefono(java.lang.String)
+numComments=8

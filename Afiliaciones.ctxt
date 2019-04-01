@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Afiliaciones
+comment0.text=\r\n\ Guarda\ una\ coleccion\ de\ los\ afiliados\ al\ CEIS.\r\n\ Permite\ registrar\ un\ nuevo\ afiliado\ y\ agregarlo\ a\ la\ coleccion.\r\n\ Permitir\ eliminar\ un\ afiliado.\r\n\ @author\ (Chia\ Andres,\ Gonzalez\ Karen)\ \r\n\ @version\ (AINCeis.v1)\r\n
+comment1.params=
+comment1.target=Afiliaciones()
+comment2.params=nombre\ codigo\ correo\ telefono
+comment2.target=void\ registrarAfiliado(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Registra\ un\ afiliado\ con\ los\ atributos\ que\ ingrese\ el\ usuario\ y\ lo\ guarda\ en\ la\ coleccion\ 'afiliados'.\r\n\ @param\ \ atributos\ del\ afiliado.\ \r\n
+comment3.params=cod
+comment3.target=void\ eliminarAfiliado(java.lang.String)
+comment3.text=\r\n\ Encuentra\ y\ elimina\ el\ afiliado\ de\ acuerdo\ al\ codigo\ ingresada\ por\ el\ usuario.\r\n\ @param\ \ codigo\ del\ afiliado.\r\n
+comment4.params=cod
+comment4.target=Afiliado\ buscarAfiliado(java.lang.String)
+comment4.text=\r\n\ Encuentra\ el\ afiliado\ de\ acuerdo\ al\ codigo\ ingresada\ por\ el\ usuario.\r\n\ @param\ \ Codigo\ del\ afiliado.\r\n\ @return\ El\ afiliado\ que\ es\ encontrado\ en\ la\ colecci\u00C3\u00B3n.\ \r\n
+comment5.params=cod\ numero
+comment5.target=boolean\ registrarCasillero(java.lang.String,\ int)
+comment6.params=
+comment6.target=void\ consultarCasilleros()
+comment7.params=
+comment7.target=void\ listarAfiliados()
+comment8.params=af
+comment8.target=void\ imprimirAfiliado(Afiliado)
+numComments=9

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Libro
+comment0.text=\r\n\ La\ clase\ libro\ tiene\ como\ atributos\ el\ titulo,\ el\ autor,\ la\ edicion\r\n\ y\ la\ editorial,\ los\ cuales\ son\ necesarios\ para\ clasificar\ el\ libro\ en\ el\ inventario.\r\n\ Los\ objetos\ de\ esta\ clase\ son\ agregadas\ a\ una\ coleccion\ en\ la\ clase\ Libreria.\r\n\ \r\n\ @author\ (Chia\ Andres,Gonz\u00C5\u00BAlez\ Karen)\ \r\n\ @version\ (AINCeis.v0.1)\r\n
+comment1.params=titulo\ autor\ edicion\ editorial
+comment1.target=Libro(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Libros\r\n
+comment2.params=
+comment2.target=boolean\ getEstado()
+comment3.params=estado
+comment3.target=void\ setEstado(boolean)
+comment4.params=titulo
+comment4.target=void\ setTitulo(java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ getTitulo()
+comment6.params=
+comment6.target=java.lang.String\ getAutor()
+comment7.params=
+comment7.target=java.lang.String\ getEdicion()
+comment8.params=
+comment8.target=java.lang.String\ getEditorial()
+numComments=9
