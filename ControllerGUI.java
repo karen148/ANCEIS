@@ -11,10 +11,22 @@ import javafx.collections.FXCollections;
 
 public class ControllerGUI
 {
+   public static Cafeteria cafeteria = ReadObject.leerCafeteria();
+   public static Afiliaciones afiliaciones = ReadObject.leerAfiliaciones();
+   public static Libreria libreria = ReadObject.leerLibrerias();
+   
+   public static void leerBase(){
+      cafeteria = ReadObject.leerCafeteria(); 
+      afiliaciones = ReadObject.leerAfiliaciones(); 
+      libreria = ReadObject.leerLibrerias();
+    }
+    
+   public static void guardarBase(){
+       WriterObject.guardar(cafeteria,afiliaciones,libreria);
+    }
+    
    public static ObservableList<Producto> getProductos(){
         ObservableList<Producto> productos = FXCollections.observableArrayList(Cafeteria.productos);
-        System.out.println();
-        productos.add(new Producto("Hola","Hola",500,500,500));
         return productos;
    }
 }
