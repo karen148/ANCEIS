@@ -27,10 +27,10 @@ public class Demo
         
         System.out.println("Aqui creamos una instancia de Cafeteria y agregamos 3 productos \n");
         Cafeteria cafeteria = new Cafeteria();
-        cafeteria.registrarProducto("Galletas","123",500,700,20);
-        cafeteria.registrarProducto("Mentas","124",70,100,50);
-        cafeteria.registrarProducto("Detodito","125",1300,1700,18);
-        cafeteria.registrarProducto("Papas Rizadas","126",700,1000,18);
+        cafeteria.registrarProducto("Galletas",500,700,20);
+        cafeteria.registrarProducto("Mentas",70,100,50);
+        cafeteria.registrarProducto("Detodito",1300,1700,18);
+        cafeteria.registrarProducto("Papas Rizadas",700,1000,18);
         cafeteria.listarProductos();
         System.out.println("---------//------------//--------------//-------");
         System.out.println("Aqui le cambiamos el precio a las galletas, \n el nombre a las Papas y eliminamos el Mentas");
