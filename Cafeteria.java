@@ -24,9 +24,10 @@ public class Cafeteria implements Serializable
      */
     public Cafeteria()
     {
-        Producto nuevoproducto = new Producto("Glletas", "Glletas", 10, 10, 10);
-       productos.add(nuevoproducto);
-     
+       productos.add(new Producto("Glletas", "Glletas", 10, 10, 10));
+       productos.add(new Producto("Glletas1", "Glletas", 10, 10, 10));
+       productos.add(new Producto("Glletas2", "Glletas", 10, 10, 10));
+       productos.add(new Producto("Glletas3", "Glletas", 10, 10, 10));
     }
 
     /**

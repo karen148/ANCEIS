@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=ControllerGUI
 comment1.params=
-comment1.target=javafx.collections.ObservableList\ getProduct()
+comment1.target=javafx.collections.ObservableList\ getProductos()
 numComments=2

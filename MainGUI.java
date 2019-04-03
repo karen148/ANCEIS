@@ -21,6 +21,7 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
+import javafx.collections.transformation.FilteredList;
 
 public class MainGUI extends Application {
 
@@ -28,6 +29,7 @@ public class MainGUI extends Application {
     private TableView<Producto> table;
     private VBox options;
     private GridPane grid;
+    private HBox barrabusqueda;
     public static void main(String[] args) {
         launch(args);
     }
@@ -49,7 +51,9 @@ public class MainGUI extends Application {
         //El metodo makeTable se encarga de hacer la tabla para mostrar los productos
         table = makeTable();
         grid.add(table,1,0);
-        grid.add(new Label("Aqui va la barra de busqueda o arriba"),1,1);
+        
+        makeSearchField();
+        grid.add(barrabusqueda,1,1);
         
         // makeOptions crea y agrupa los botones de Registrar Producto,
         // Eliminar Producto y Registrar Venta
@@ -57,13 +61,28 @@ public class MainGUI extends Application {
         grid.add(options,0,0);
         
 
-        
-        
         Scene scene = new Scene(grid);
         window.setScene(scene);
         window.show();
     }
     
+    /*
+     * Retorna el componente de la barra de busqueda.
+     */
+    public void makeSearchField(){
+        FilteredList<Producto> flProduct = new FilteredList(ControllerGUI.getProductos(), p -> true);//Pass the data to a filtered list
+        table.setItems(flProduct);//Set the table's items using the filtered list
+
+        TextField searchField = new TextField();
+        searchField.setPromptText("Search here!");
+        searchField.setOnKeyReleased(keyEvent ->{
+            flProduct.setPredicate(p -> p.getNombre().toLowerCase().contains(searchField.getText().toLowerCase().trim()));//filter table by first name
+        });
+        
+        Text buscar = new Text("Buscar");
+        barrabusqueda = new HBox(buscar,searchField);
+        barrabusqueda.setAlignment(Pos.CENTER);
+    }
     /*
      * Crea los campos para solicitar los valores del producto, para luego crearlo.
      */
@@ -134,7 +153,9 @@ public class MainGUI extends Application {
         options.add(preciocField, 1, 3);
         
         options.setPrefSize(300, 300);
+        GridPane.setMargin(options, new Insets(20,0,0,40));
         grid.add(options,0,1);
+        
     }
     
     public VBox makeOptions(){
@@ -162,10 +183,10 @@ public class MainGUI extends Application {
         //Name column
         TableColumn<Producto, String> nameColumn = new TableColumn<>("Producto");
         nameColumn.setMinWidth(200);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("producto"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
         //Price column
-        TableColumn<Producto, Double> priceColumn = new TableColumn<>("Precio");
+        TableColumn<Producto, Integer> priceColumn = new TableColumn<>("Precio");
         priceColumn.setMinWidth(100);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("precioventa"));
 
@@ -173,9 +194,9 @@ public class MainGUI extends Application {
         TableColumn<Producto, String> quantityColumn = new TableColumn<>("Cantidad");
         quantityColumn.setMinWidth(100);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
-
+        Cafeteria cafeteria = new Cafeteria();
         table = new TableView<>();
-        table.setItems(ControllerGUI.getProduct());
+        table.setItems(ControllerGUI.getProductos());
         table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
         return table;
     }

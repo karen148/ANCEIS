@@ -11,12 +11,10 @@ import javafx.collections.FXCollections;
 
 public class ControllerGUI
 {
-   public static ObservableList<Producto> getProduct(){
-        ObservableList<Producto> productos = FXCollections.observableArrayList();
-        for(Producto p : Cafeteria.productos){
-            System.out.println("Hola");
-            productos.add(p);
-        }
+   public static ObservableList<Producto> getProductos(){
+        ObservableList<Producto> productos = FXCollections.observableArrayList(Cafeteria.productos);
+        System.out.println();
+        productos.add(new Producto("Hola","Hola",500,500,500));
         return productos;
    }
 }
