@@ -90,7 +90,67 @@ public class MainGUI extends Application {
         grid.add(derecha,1,0,1,2);
     
     }
-    //
+    public void definirVenta(){
+        Producto producto = table.getSelectionModel().getSelectedItem();
+        // Borra el contenido del label state
+        state.setText("");
+        // Etiqueta para el nombre
+        Text nombre = new Text(producto.getNombre());
+        //Etiqueta para la cantidad
+        Text cantLabel = new Text("Cantidad"); 
+        // Campo de texto para la cantidad
+        cantProduct = new TextField();
+        cantProduct.textProperty().addListener(new ChangeListener<String>() {
+            
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, 
+                    String newValue) {
+                    if (!newValue.matches("\\d*")) {
+                        cantProduct.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
+                }
+        }); 
+        
+        Button aceptarVenta = new Button("Registrar");
+        aceptarVenta.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                registrarVenta();
+            }
+        });
+        StackPane stack = new StackPane();
+        stack.getChildren().add(aceptarVenta);
+        
+        StackPane stack2 = new StackPane();
+        stack2.getChildren().add(nombre);
+        
+        GridPane options = new GridPane();
+        options.setHgap(10);
+        options.setVgap(10);
+        
+        options.add(stack2, 0, 0, 2, 1); 
+       
+        options.add(cantLabel, 0, 1); 
+        options.add(cantProduct, 1, 1); 
+        
+        options.add(stack, 0, 2, 2, 1); 
+
+        options.setPrefSize(300, 300);
+        GridPane.setMargin(options, new Insets(0,0,0,40));
+        grid.add(options,0,1);
+        
+        
+    }
+    
+    public void registrarVenta(){
+    }
+    
+    /*
+     * Obtiene los valores de los campos para registrar el producto
+     * y llama al meotodo de registrarProducto de el controlador
+     * Luego actualiza el scene
+     */
+    
     public void registrarProducto(){
         String nombre = nameProduct.getText();
         int preciocompra = Integer.parseInt(preciocField.getText());
@@ -139,6 +199,7 @@ public class MainGUI extends Application {
         // Etiqueta para la cantidad
         Text cantLabel = new Text("Cantidad"); 
         // Campo de texto para la cantidad
+        // con un metodo para que solo acepte numeros
         cantProduct = new TextField();
         cantProduct.textProperty().addListener(new ChangeListener<String>() {
             
@@ -180,15 +241,15 @@ public class MainGUI extends Application {
                 }
         }); 
         
-        Button aceptarVenta = new Button("Registrar");
-        aceptarVenta.setOnAction(new EventHandler<ActionEvent>() {
+        Button aceptarProducto = new Button("Registrar");
+        aceptarProducto.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 registrarProducto();
             }
         });
         productoValores = new StackPane();
-        productoValores.getChildren().add(aceptarVenta);
+        productoValores.getChildren().add(aceptarProducto);
         //Agrupa los campos en una Grid;
         GridPane options = new GridPane();
         options.setHgap(10);
@@ -218,6 +279,13 @@ public class MainGUI extends Application {
     public VBox makeOptions(){
         options = new VBox();
         registrarVenta = new Button("Registrar venta");
+        registrarVenta.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                definirVenta();
+            }
+        });
+        
         options.getChildren().add(registrarVenta);
         registrarProducto= new Button("Registrar producto");
         registrarProducto.setOnAction(new EventHandler<ActionEvent>() {
