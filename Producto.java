@@ -12,6 +12,7 @@ public class Producto implements Serializable
 {
     // instance variables - replace the example below with your own
     private String nombre;
+    private String codigo;
     private int preciocompra;
     private int precioventa;
     private int cantidad;
@@ -19,19 +20,25 @@ public class Producto implements Serializable
     /**
      * Constructor for objects of class Producto
      */
-    public Producto(String nombre, int preciocompra , int precioventa , int cantidad)
+    public Producto(String nombre, String codigo, int preciocompra , int precioventa , int cantidad)
     {
         this.nombre = nombre;
         this.preciocompra = preciocompra;
         this.precioventa = precioventa;
         this.cantidad = cantidad;
+        this.codigo = codigo;
     }
     
     public String toString(){
-        return  "Nombre" + nombre
+        return  "Codigo" + codigo 
+                + "Nombre" + nombre
                 + "Precio de compra" + preciocompra
                 + "Precio de venta" + precioventa
                 + "Cantidad" + cantidad;
+    }
+
+    public String getCodigo(){
+        return codigo;
     }
     
     public int getCantidad(){
@@ -53,7 +60,10 @@ public class Producto implements Serializable
     public void setCantidad(int cantidad){
         this.cantidad += cantidad;
     }
-   
+    
+     public void setCodigo(String codigo){
+        this.codigo = codigo;
+    }
      public void setNombre(String nombre){
         this.nombre = nombre;
     }
