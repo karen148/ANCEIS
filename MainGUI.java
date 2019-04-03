@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,7 +36,7 @@ public class MainGUI extends Application {
     private TextField cantProduct;
     private TextField preciovField;
     private TextField preciocField;
-    
+    private Text state;
     public static void main(String[] args) {
         launch(args);
     }
@@ -56,11 +57,10 @@ public class MainGUI extends Application {
         
         
         makeRight();
-        
+        makeLeft();
         // makeOptions crea y agrupa los botones de Registrar Producto,
         // Eliminar Producto y Registrar Venta
-        options = makeOptions();
-        grid.add(options,0,0);
+        
         
 
         Scene scene = new Scene(grid);
@@ -68,6 +68,10 @@ public class MainGUI extends Application {
         window.show();
     }
     
+    public void makeLeft(){
+        options = makeOptions();
+        grid.add(options,0,0);
+    }
     public void makeRight(){
          // VBox para la tabla ya la barra de busqueda
         VBox derecha = new VBox();
@@ -81,14 +85,20 @@ public class MainGUI extends Application {
         grid.add(derecha,1,0,1,2);
     
     }
+    //
     public void registrarProducto(){
         String nombre = nameProduct.getText();
         int preciocompra = Integer.parseInt(preciocField.getText());
         int precioventa = Integer.parseInt(preciovField.getText());
         int cantidad = Integer.parseInt(cantProduct.getText());
         ControllerGUI.registrarPro(nombre, preciocompra, precioventa, cantidad);
+        grid.getChildren().clear();
         makeRight();
-        
+        makeLeft();
+        state = new Text("El producto se agregó correctamente");
+        StackPane layout = new StackPane();
+        layout.getChildren().add(state);
+        grid.add(layout,0,0,1,2);   
     }
 
     
@@ -193,7 +203,7 @@ public class MainGUI extends Application {
         
         
         options.setPrefSize(300, 300);
-        GridPane.setMargin(options, new Insets(20,0,0,40));
+        GridPane.setMargin(options, new Insets(0,0,0,40));
         grid.add(options,0,1);
         
     }
