@@ -36,7 +36,11 @@ public class MainGUI extends Application {
     private TextField cantProduct;
     private TextField preciovField;
     private TextField preciocField;
-    private Text state;
+    private Text state = new Text();
+    private Button registrarVenta;
+    private Button registrarProducto;
+    private StackPane productoValores;
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -50,6 +54,7 @@ public class MainGUI extends Application {
         // la tabla, los botones, la barra de busqueda y un campo que se muestra
         // con las opciones de registrar y eliminar producto.
         grid = new GridPane();
+        GridPane.setMargin(grid,new Insets(20,20,20,20));
         grid.getColumnConstraints().add(new ColumnConstraints(300));
         grid.getColumnConstraints().add(new ColumnConstraints(500));
         grid.getRowConstraints().add(new RowConstraints(200));
@@ -95,10 +100,10 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         makeRight();
         makeLeft();
-        state = new Text("El producto se agregó correctamente");
+        state.setText("El producto se agregó correctamente");
         StackPane layout = new StackPane();
         layout.getChildren().add(state);
-        grid.add(layout,0,0,1,2);   
+        grid.add(layout,0,1,1,2);   
     }
 
     
@@ -124,6 +129,8 @@ public class MainGUI extends Application {
      * Crea los campos para solicitar los valores del producto, para luego crearlo.
      */
     public void askProductValues(){
+        // Borra el contenido del label state
+        state.setText("");
         // Etiqueta para el nombre
         Text nameLabel = new Text("Nombre"); 
         // Campo de texto para el nombre
@@ -180,8 +187,8 @@ public class MainGUI extends Application {
                 registrarProducto();
             }
         });
-        StackPane layout = new StackPane();
-        layout.getChildren().add(aceptarVenta);
+        productoValores = new StackPane();
+        productoValores.getChildren().add(aceptarVenta);
         //Agrupa los campos en una Grid;
         GridPane options = new GridPane();
         options.setHgap(10);
@@ -199,7 +206,7 @@ public class MainGUI extends Application {
         options.add(preciocLabel, 0, 3); 
         options.add(preciocField, 1, 3);
         
-        options.add(layout, 0, 4, 2,1); 
+        options.add(productoValores, 0, 4, 2,1); 
         
         
         options.setPrefSize(300, 300);
@@ -210,16 +217,16 @@ public class MainGUI extends Application {
     
     public VBox makeOptions(){
         options = new VBox();
-        Button button1 = new Button("Registrar venta");
-        options.getChildren().add(button1);
-        Button button2= new Button("Registrar producto");
-        button2.setOnAction(new EventHandler<ActionEvent>() {
+        registrarVenta = new Button("Registrar venta");
+        options.getChildren().add(registrarVenta);
+        registrarProducto= new Button("Registrar producto");
+        registrarProducto.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 askProductValues();
             }
         });
-        options.getChildren().add(button2);
+        options.getChildren().add(registrarProducto);
         
         options.setSpacing(50);
         options.setAlignment(Pos.CENTER);
