@@ -13,7 +13,7 @@ public class Libreria implements Serializable
 {
     // ArrayList que guarda todos los objetos de tipo Libro.
     public static ArrayList<Libro> libros = new ArrayList<Libro>();
-    private static ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+    public static ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
     private static final long serialVersionUID = -6247753484042383967L;
     /**
      * Constructor for objects of class Libreria

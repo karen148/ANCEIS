@@ -89,5 +89,20 @@ public class ControllerGUI
        Libreria.consultarPrestamo(cod,titulo);
     }
     
-   // 
+   //Listar Prestamos
+   public static ObservableList<Prestamo> getPrestamos(){
+    ObservableList<Prestamo> prestamos = FXCollections.observableArrayList(Libreria.prestamos);
+    return prestamos;
+   }
+   
+   //Registra afiliacion
+   public static void registrarAfi(String nombre, String codigo, String correo, String telefono){
+       Afiliaciones.registrarAfiliado(nombre,codigo,correo,telefono);
+    }
+   
+   // Listar Afiliados
+   public static ObservableList<Afiliado> getAfiliados(){
+    ObservableList<Afiliado> afiliados = FXCollections.observableArrayList(Afiliaciones.afiliados);
+    return afiliados;
+   }
 }
