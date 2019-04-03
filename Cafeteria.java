@@ -64,7 +64,7 @@ public class Cafeteria implements Serializable
      
     }
     
-    public static Producto buscarProducto(String nombre){
+    public Producto buscarProducto(String nombre){
         for(Producto p : productos){
             String aux = p.getNombre();
             if(aux.equals(nombre))
@@ -90,7 +90,7 @@ public class Cafeteria implements Serializable
      * Registra la venta de un producto y suma la ganancia de la venta al atributo 'ganancia' de la clase 'Ganancias'.
      * @param  Producto que va a ser vendido. 
      */
-    public static void registrarVenta(String nombre, int cantidad){
+    public void registrarVenta(String nombre, int cantidad){
         Producto prod = buscarProducto(nombre);
         prod.setCantidad(-cantidad);
         Ganancias.SumarGanancia(prod.getpventa());
@@ -99,7 +99,7 @@ public class Cafeteria implements Serializable
      * Elimina un producto de la coleccion de acuerdo a la clave que ingrese el usuario.
      * @param  Clave del producto que va a ser eliminado. 
      */
-    public static void eliminarProducto(String nombre){
+    public void eliminarProducto(String nombre){
         Producto p = buscarProducto(nombre);
         if(p != null){
             int index = productos.indexOf(p);
