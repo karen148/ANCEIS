@@ -43,29 +43,36 @@ public class WriterObject
            FileOutputStream fos = new FileOutputStream( "afiliaciones.obj", false );
            do{
                try{
-                   
+                   ObjectOutputStream oos = new ObjectOutputStream( fos );
+                   oos.writeObject(afiliaciones);   
+                   oos.close();
                }
-               catch()
+               catch(Exception e){
+                  System.out.println("El registro de afiliaciones no se ha completado"); 
+               }
             }while(false);
-           
-           ObjectOutputStream oos = new ObjectOutputStream( fos );
-           oos.writeObject(afiliaciones);   
-           oos.close();
        }
        catch(Exception e){
-           System.out.println("El registro de afiliaciones no se ha completado");
+           e.printStackTrace();
        } 
    }
    
    private static void guardarLireria(Libreria libreria){
       try {
            FileOutputStream fos = new FileOutputStream( "libreria.obj", false );
-           ObjectOutputStream oos = new ObjectOutputStream( fos );
-           oos.writeObject(libreria);   
-           oos.close();
+           do{
+               try{
+                   ObjectOutputStream oos = new ObjectOutputStream( fos );
+                   oos.writeObject(libreria);   
+                   oos.close();
+               }
+               catch(Exception e){
+                   System.out.println("El registro de afiliaciones no se ha completado");
+               }
+            }while(false);
        }
        catch(Exception e){
-           System.out.println("El registro de afiliaciones no se ha completado");
+           e.printStackTrace();
        } 
    }
 }

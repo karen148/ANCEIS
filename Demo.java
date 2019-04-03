@@ -55,10 +55,10 @@ public class Demo
         // libreria.consultarPrestamo("221","Libro negro");
         // System.out.println("---------//------------//--------------//-------");
         // WriterObject.guardar(cafeteria,afiliaciones,libreria);
-        Cafeteria cafeteria = ReadObject.leerCafeteria();
-        cafeteria.listarProductos();
-        // Afiliaciones afiliacion = ReadObject.leerAfiliaciones();
-        // afiliacion.listarAfiliados();
+        // Cafeteria cafeteria = ReadObject.leerCafeteria();
+        // cafeteria.listarProductos();
+        Afiliaciones afiliacion = ReadObject.leerAfiliaciones();
+        afiliacion.listarAfiliados();
         // Libreria libreria = ReadObject.leerLibrerias();
         // libreria.listarLibros();
     }

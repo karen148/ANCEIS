@@ -11,13 +11,13 @@ public class Afiliaciones implements Serializable
 {
     // instance variables - replace the example below with your own
     private static ArrayList<Afiliado> afiliados = new ArrayList<Afiliado>();
-    private static ArrayList<Afiliado> afiliadosantiguos;
+    private static ArrayList<Afiliado> afiliadosantiguos = new ArrayList<Afiliado>();
     private static Afiliado[] casilleros = new Afiliado[20];
     private final int valorantiguos = 8000;
     private final int valornuevos = 10000;
     
     public Afiliaciones(){
-        afiliadosantiguos = new ArrayList<Afiliado>();
+        
     }
      
     /**
