@@ -54,7 +54,6 @@ public class Demo
         libreria.listarLibros();
         libreria.consultarPrestamo("221","Libro negro");
         System.out.println("---------//------------//--------------//-------");
-        System.out.println("/n");
         WriterObject.guardar(cafeteria,afiliaciones,libreria);
         System.out.println("---------//------------//--------------//-------");
         System.out.println("Lista actualizada de cafeteria");
