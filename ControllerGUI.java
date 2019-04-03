@@ -16,7 +16,6 @@ public class ControllerGUI
    public static Libreria libreria = ReadObject.leerLibrerias();
    
    
-   
    public static void leerBase(){
       cafeteria = ReadObject.leerCafeteria(); 
       afiliaciones = ReadObject.leerAfiliaciones(); 
@@ -40,11 +39,11 @@ public class ControllerGUI
     
    //Para modificar la información del producto
    public static void modificarProducto(String nombre, int preciocompra, int precioventa, int cantidad){
-       if(cafeteria.buscarProducto(nombre).equals(nombre)){
-           cafeteria.buscarProducto(nombre).setNombre(nombre);
-           cafeteria.buscarProducto(nombre).setCantidad(cantidad);
-           cafeteria.buscarProducto(nombre).setpventa(precioventa);
-           cafeteria.buscarProducto(nombre).setpcompra(preciocompra);
+       if(Cafeteria.buscarProducto(nombre).equals(nombre)){
+           Cafeteria.buscarProducto(nombre).setNombre(nombre);
+           Cafeteria.buscarProducto(nombre).setCantidad(cantidad);
+           Cafeteria.buscarProducto(nombre).setpventa(precioventa);
+           Cafeteria.buscarProducto(nombre).setpcompra(preciocompra);
         }else{
             System.out.println("El producto no existe");
         }   
@@ -52,8 +51,10 @@ public class ControllerGUI
    
    //Para eliminar producto
    public static void eliminarPro(String nombre){
-       cafeteria.eliminarProducto(nombre);
+       Cafeteria.eliminarProducto(nombre);
     }
     
-    
+   public static void registrarLib(String titulo, String autor, String edicion, String editorial){
+       
+    }
 }
