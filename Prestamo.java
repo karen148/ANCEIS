@@ -28,6 +28,7 @@ public class Prestamo implements Serializable
         this.afiliado = afiliado;
         this.libro = libro;
         fechaprestamo = new Date();
+        multa = 0;
     }
     /**
      * Modifica las fechas del prestamo de modo que aumente su plazo de entrega. 

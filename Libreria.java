@@ -135,11 +135,24 @@ public class Libreria implements Serializable
         }
     }
     
+    public void listarPrestamo(){
+        for(Prestamo pr : prestamos){
+            imprimirPrestamo(pr);
+        }
+    }
+    
     public void imprimirLibro(Libro lb){
         System.out.println("Titulo: "+lb.getTitulo());
         System.out.println("Autor: "+lb.getAutor());
         System.out.println("Edición: "+lb.getEdicion());
         System.out.println("Editorial: "+lb.getEditorial());
         System.out.println("\n");
+    }
+    
+    public void imprimirPrestamo(Prestamo pres){
+        System.out.println("Libro: "+pres.getLibro());
+        System.out.println("Afiliado: "+pres.getAfiliado());
+        System.out.println("Fecha del prestamo: "+pres.getFecha());
+        System.out.println("Multa: "+pres.getMulta());
     }
 }

@@ -17,14 +17,14 @@ import java.io.Serializable;
 public class Cafeteria implements Serializable
 {
     // instance variables - replace the example below with your own
-    private ArrayList<Producto> productos;
+    private static ArrayList<Producto> productos = new ArrayList<Producto>();  ;
     
     /**
      * Constructor for objects of class 
      */
     public Cafeteria()
     {
-      productos = new ArrayList<Producto>();   
+     
     }
 
     /**
@@ -82,26 +82,7 @@ public class Cafeteria implements Serializable
        Producto nuevoproducto = new Producto(nombre, codigo, preciocompra, precioventa, cantidad);
        productos.add(nuevoproducto);
    }
-   
-   /*public void leerProducto(){
-       try{ 
-           FileInputStream fis = new FileInputStream( "cafeteria.obj" );
-           ObjectInputStream ois = new ObjectInputStream( fis );
-           try{
-               while(true){
-                   productos.add((Producto)ois.readObject());
-                }
-            }
-           catch(Exception e)
-           {e.printStackTrace();}
-          }
-       catch(Exception e){
-           
-           e.printStackTrace();
-       }
-       
-    }*/
-   
+  
     /**
      * Registra la venta de un producto y suma la ganancia de la venta al atributo 'ganancia' de la clase 'Ganancias'.
      * @param  Producto que va a ser vendido. 

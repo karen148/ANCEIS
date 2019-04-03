@@ -15,7 +15,7 @@ public class ReadObject
 {
     // instance variables - replace the example below with your ow
     
-    public static Cafeteria leerCafeteria(){
+  public static Cafeteria leerCafeteria(){
      Cafeteria cafeteria = null;
         try{ 
            FileInputStream fis = new FileInputStream( "cafeteria.obj" );
@@ -28,8 +28,8 @@ public class ReadObject
           }
        catch(Exception e){
            e.printStackTrace();
-       }  
-    return cafeteria;
+        }  
+     return cafeteria;
  }
 
  public static Afiliaciones leerAfiliaciones(){
@@ -64,5 +64,7 @@ public class ReadObject
        e.printStackTrace();
    }  
   return libreria;
- }
+  }
 }
+
+

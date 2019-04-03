@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class WriterObject
 {
-   public static void guardar(Cafeteria cafeteria,Afiliaciones afiliaciones, Libreria libreria){
+   public static void guardar(Cafeteria cafeteria, Afiliaciones afiliaciones, Libreria libreria){
        guardarCafeteria(cafeteria);
        guardarAfiliado(afiliaciones);
        guardarLireria(libreria);
