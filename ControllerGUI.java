@@ -34,7 +34,7 @@ public class ControllerGUI
    
    //Parar registrar el producto
    public static void registrarPro(String nombre,int preciocompra,int precioventa,int cantidad){
-       Cafeteria.registrarProducto(nombre,cantidad,preciocompra,precioventa);
+       Cafeteria.registrarProducto(nombre,preciocompra,precioventa,cantidad);
    }
     
    //Para modificar la información del producto
@@ -54,10 +54,24 @@ public class ControllerGUI
        Cafeteria.eliminarProducto(nombre);
     }
    
-   public static 
-    
    //Registro de libreria
    public static void registrarLib(String titulo, String autor, String edicion, String editorial){
        Libreria.registrarLibro(titulo,autor,edicion,editorial);
+    }
+    
+   //Listar libros
+   public static ObservableList<Libro> getLibreria(){
+    ObservableList<Libro> libros = FXCollections.observableArrayList(Libreria.libros);
+    return libros;
+   }
+
+   //Eliminar libros
+   public static void eliminarLib(String titulo){
+       Libreria.eliminarLibro(titulo);
+    }
+    
+   // Solicitar prestamos
+   public static void solicitarPres(){
+       
     }
 }
