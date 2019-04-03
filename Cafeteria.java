@@ -24,10 +24,10 @@ public class Cafeteria implements Serializable
      */
     public Cafeteria()
     {
-       productos.add(new Producto("Glletas", "Glletas", 10, 10, 10));
-       productos.add(new Producto("Glletas1", "Glletas", 10, 10, 10));
-       productos.add(new Producto("Glletas2", "Glletas", 10, 10, 10));
-       productos.add(new Producto("Glletas3", "Glletas", 10, 10, 10));
+       // productos.add(new Producto("Glletas", "Glletas", 10, 10, 10));
+       // productos.add(new Producto("Glletas1", "Glletas", 10, 10, 10));
+       // productos.add(new Producto("Glletas2", "Glletas", 10, 10, 10));
+       // productos.add(new Producto("Glletas3", "Glletas", 10, 10, 10));
     }
 
     /**
@@ -80,9 +80,9 @@ public class Cafeteria implements Serializable
      * Registra un producto de acuerdo a los parametros que ingrese el usuario y lo guarda en la coleccion de productos.
      * @param  atributos del producto. 
      */
-   public void registrarProducto(String nombre, String codigo, int preciocompra , int precioventa , int cantidad){ 
+   public void registrarProducto(String nombre, int preciocompra , int precioventa , int cantidad){ 
        
-       Producto nuevoproducto = new Producto(nombre, codigo, preciocompra, precioventa, cantidad);
+       Producto nuevoproducto = new Producto(nombre,preciocompra,precioventa,cantidad);
        productos.add(nuevoproducto);
    }
   
@@ -120,7 +120,6 @@ public class Cafeteria implements Serializable
     
     public void imprimirProducto(Producto pd){
         System.out.println("Nombre: "+pd.getNombre());
-        System.out.println("Codigo: "+pd.getCodigo());
         System.out.println("Precio compra: "+pd.getpcompra());
         System.out.println("Precio venta: "+pd.getpventa());
         System.out.println("Cantidad: "+pd.getCantidad());
