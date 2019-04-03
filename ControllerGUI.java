@@ -26,7 +26,7 @@ public class ControllerGUI
        WriterObject.guardar(cafeteria,afiliaciones,libreria);
    }
     
-   //Para mostras los datos de los productos en la tabla 
+   //Para mostrar los datos de los productos en la tabla 
    public static ObservableList<Producto> getProductos(){
         ObservableList<Producto> productos = FXCollections.observableArrayList(Cafeteria.productos);
         return productos;
@@ -53,8 +53,11 @@ public class ControllerGUI
    public static void eliminarPro(String nombre){
        Cafeteria.eliminarProducto(nombre);
     }
+   
+   public static 
     
+   //Registro de libreria
    public static void registrarLib(String titulo, String autor, String edicion, String editorial){
-       
+       Libreria.registrarLibro(titulo,autor,edicion,editorial);
     }
 }
