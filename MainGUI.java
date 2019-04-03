@@ -19,7 +19,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.RowConstraints;
 
 public class MainGUI extends Application {
 
@@ -40,6 +41,11 @@ public class MainGUI extends Application {
         // la tabla, los botones, la barra de busqueda y un campo que se muestra
         // con las opciones de registrar y eliminar producto.
         grid = new GridPane();
+        grid.getColumnConstraints().add(new ColumnConstraints(300));
+        grid.getColumnConstraints().add(new ColumnConstraints(500));
+        grid.getRowConstraints().add(new RowConstraints(200));
+        grid.getRowConstraints().add(new RowConstraints(200));
+        
         //El metodo makeTable se encarga de hacer la tabla para mostrar los productos
         table = makeTable();
         grid.add(table,1,0);
