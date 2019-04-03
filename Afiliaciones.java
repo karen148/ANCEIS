@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 /**
  * Guarda una coleccion de los afiliados al CEIS.
  * Permite registrar un nuevo afiliado y agregarlo a la coleccion.
@@ -6,16 +7,17 @@ import java.util.ArrayList;
  * @author (Chia Andres, Gonzalez Karen) 
  * @version (AINCeis.v1)
  */
-public class Afiliaciones
+public class Afiliaciones implements Serializable
 {
     // instance variables - replace the example below with your own
     private static ArrayList<Afiliado> afiliados = new ArrayList<Afiliado>();
-    private static ArrayList<Afiliado> afiliadosantiguos = new ArrayList<Afiliado>();
+    private static ArrayList<Afiliado> afiliadosantiguos;
     private static Afiliado[] casilleros = new Afiliado[20];
     private final int valorantiguos = 8000;
     private final int valornuevos = 10000;
+    
     public Afiliaciones(){
-
+        afiliadosantiguos = new ArrayList<Afiliado>();
     }
      
     /**

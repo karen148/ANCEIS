@@ -1,4 +1,4 @@
-
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * Guarda una coleccion de los libros.
@@ -9,17 +9,17 @@ import java.util.ArrayList;
  * @author (Chia Andres,Gonzźlez Karen) 
  * @version (AINCeis.v0.1)
  */
-public class Libreria
+public class Libreria implements Serializable
 {
     // ArrayList que guarda todos los objetos de tipo Libro.
-    private static ArrayList<Libro> libros = new ArrayList<Libro>();;
+    private static ArrayList<Libro> libros = new ArrayList<Libro>();
     private static ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
     
     /**
      * Constructor for objects of class Libreria
      */
     public Libreria(){
-        
+      
     }
     
     /**

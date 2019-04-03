@@ -1,4 +1,4 @@
-
+import java.io.Serializable;
 /**
  * En la clase Afiliado se registra los datos de la personas que se van afiliar al 
  * CEIS.
@@ -6,7 +6,7 @@
  * @author (Chia Andres,González Karen) 
  * @version (AINCeis.v1)
  */
-public class Afiliado
+public class Afiliado implements Serializable
 {
     // instance variables - replace the example below with your own
     private String nombre;
@@ -23,6 +23,14 @@ public class Afiliado
         this.correo = correo;
         this.telefono = telefono;
     }
+    
+    public String toString(){
+        return "Codigo" + codigo
+                + "Nombre" + nombre
+                + "Correo" + nombre
+                + "telefono" + telefono;
+    }
+    
     public String getCodigo(){
         return codigo;
     }

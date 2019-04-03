@@ -27,7 +27,7 @@ public class Ganancias
     {
         TotalGanancia += ganancia;
 
-        //System.out.println("Ganancias: "+TotalGanancia);
+       System.out.println("Ganancias: "+TotalGanancia);
 
     }
 }

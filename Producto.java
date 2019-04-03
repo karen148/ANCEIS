@@ -1,4 +1,4 @@
-
+import java.io.Serializable;
 /**
  * La clase Producto tiene como atributos el nombre del producto, 
  * el precio de compra, el precio de venta y su cantidad los cuales 
@@ -8,7 +8,7 @@
  * @author (Chia Andres,González Karen) 
  * @version (AINCeis.v0.1)
  */
-public class Producto
+public class Producto implements Serializable
 {
     // instance variables - replace the example below with your own
     private String nombre;
@@ -27,6 +27,14 @@ public class Producto
         this.precioventa = precioventa;
         this.cantidad = cantidad;
         this.codigo = codigo;
+    }
+    
+    public String toString(){
+        return  "Codigo" + codigo 
+                + "Nombre" + nombre
+                + "Precio de compra" + preciocompra
+                + "Precio de venta" + precioventa
+                + "Cantidad" + cantidad;
     }
 
     public String getCodigo(){

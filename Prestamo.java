@@ -1,4 +1,4 @@
-
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -11,7 +11,7 @@ import java.util.Date;
  * @author (Chia Andres, Gonzalez Karen) 
  * @version (AINCeis.v1)
  */
-public class Prestamo
+public class Prestamo implements Serializable
 {
     // instance variables - replace the example below with your own
     private Libro libro;

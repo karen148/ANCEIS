@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=WriterObject
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ WriterObject\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=cafeteria\ afiliaciones\ libreria
+comment1.target=void\ guardar(Cafeteria,\ Afiliaciones,\ Libreria)
+comment2.params=cafeteria
+comment2.target=void\ guardarCafeteria(Cafeteria)
+comment3.params=afiliaciones
+comment3.target=void\ guardarAfiliado(Afiliaciones)
+comment4.params=libreria
+comment4.target=void\ guardarLireria(Libreria)
+numComments=5

@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.io.Serializable;
 /**
  * La clase libro tiene como atributos el titulo, el autor, la edicion
  * y la editorial, los cuales son necesarios para clasificar el libro en el inventario.
@@ -7,7 +8,7 @@
  * @author (Chia Andres,Gonzźlez Karen) 
  * @version (AINCeis.v0.1)
  */
-public class Libro
+public class Libro implements Serializable
 {
     // instance variables - replace the example below with your own
     private String titulo;
@@ -27,6 +28,13 @@ public class Libro
         this.editorial = editorial;
         this.edicion = edicion;
         this.estado = true;
+    }
+    
+    public String toString(){
+        return "Titulo" + titulo
+                + "Autor" + autor
+                + "Editorial" + editorial
+                + "Edicion" + edicion;
     }
     
     public boolean getEstado(){

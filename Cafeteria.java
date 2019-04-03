@@ -5,9 +5,16 @@
  * @author (Chia Andres, Gonzalez Karen) 
  * @version (AINCEIS.v1)
  */
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
-//import java.util.Scanner;
-public class Cafeteria
+import java.util.Scanner;
+import java.io.Serializable;
+public class Cafeteria implements Serializable
 {
     // instance variables - replace the example below with your own
     private ArrayList<Producto> productos;
@@ -70,10 +77,30 @@ public class Cafeteria
      * Registra un producto de acuerdo a los parametros que ingrese el usuario y lo guarda en la coleccion de productos.
      * @param  atributos del producto. 
      */
-   public void registrarProducto(String nombre, String codigo, int preciocompra , int precioventa , int cantidad){
-        Producto nuevoproducto = new Producto(nombre, codigo, preciocompra, precioventa, cantidad);
-        productos.add(nuevoproducto);
+   public void registrarProducto(String nombre, String codigo, int preciocompra , int precioventa , int cantidad){ 
+       
+       Producto nuevoproducto = new Producto(nombre, codigo, preciocompra, precioventa, cantidad);
+       productos.add(nuevoproducto);
    }
+   
+   /*public void leerProducto(){
+       try{ 
+           FileInputStream fis = new FileInputStream( "cafeteria.obj" );
+           ObjectInputStream ois = new ObjectInputStream( fis );
+           try{
+               while(true){
+                   productos.add((Producto)ois.readObject());
+                }
+            }
+           catch(Exception e)
+           {e.printStackTrace();}
+          }
+       catch(Exception e){
+           
+           e.printStackTrace();
+       }
+       
+    }*/
    
     /**
      * Registra la venta de un producto y suma la ganancia de la venta al atributo 'ganancia' de la clase 'Ganancias'.
@@ -102,8 +129,9 @@ public class Cafeteria
     
     public void listarProductos(){
         for(Producto pd : productos){
-            imprimirProducto(pd);
+           imprimirProducto(pd);
         }
+   
     }
     
     public void imprimirProducto(Producto pd){
