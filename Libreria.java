@@ -120,7 +120,7 @@ public class Libreria implements Serializable
         }
     }
     
-    public void pagarMulta(String cod, String titulo){
+    public static void pagarMulta(String cod, String titulo){
         for(Prestamo p: prestamos){
            if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
                p.pagarmulta();

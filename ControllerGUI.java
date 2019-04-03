@@ -14,18 +14,17 @@ public class ControllerGUI
    public static Cafeteria cafeteria = ReadObject.leerCafeteria();
    public static Afiliaciones afiliaciones = ReadObject.leerAfiliaciones();
    public static Libreria libreria = ReadObject.leerLibrerias();
-   
+ 
+   public static void guardarBase(){
+       WriterObject.guardar(cafeteria,afiliaciones,libreria);
+   }
    
    public static void leerBase(){
       cafeteria = ReadObject.leerCafeteria(); 
       afiliaciones = ReadObject.leerAfiliaciones(); 
       libreria = ReadObject.leerLibrerias();
    }
-    
-   public static void guardarBase(){
-       WriterObject.guardar(cafeteria,afiliaciones,libreria);
-   }
-    
+     
    //Para mostrar los datos de los productos en la tabla 
    public static ObservableList<Producto> getProductos(){
         ObservableList<Producto> productos = FXCollections.observableArrayList(Cafeteria.productos);
@@ -54,6 +53,11 @@ public class ControllerGUI
        Cafeteria.eliminarProducto(nombre);
     }
    
+   //Registrar venta
+   public static void registrarVen(String nombre, int cantidad){
+       Cafeteria.registrarVenta(nombre,cantidad);
+    }
+    
    //Registro de libreria
    public static void registrarLib(String titulo, String autor, String edicion, String editorial){
        Libreria.registrarLibro(titulo,autor,edicion,editorial);
@@ -71,7 +75,19 @@ public class ControllerGUI
     }
     
    // Solicitar prestamos
-   public static void solicitarPres(){
-       
+   public static void solicitarPres(String cod, String titulo){
+       Libreria.solicitarPrestamo(cod,titulo);
     }
+    
+   //Pagar multa
+   public static void pagarMul(String cod, String titulo){
+       Libreria.pagarMulta(cod,titulo);
+    }
+    
+   //Consultar prestamo
+   public static void consultarPres(String cod, String titulo){
+       Libreria.consultarPrestamo(cod,titulo);
+    }
+    
+   // 
 }
