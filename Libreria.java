@@ -150,8 +150,8 @@ public class Libreria implements Serializable
     }
     
     public void imprimirPrestamo(Prestamo pres){
-        System.out.println("Libro: "+pres.getLibro());
-        System.out.println("Afiliado: "+pres.getAfiliado());
+        System.out.println("Libro: "+pres.getLibro().getTitulo());
+        System.out.println("Afiliado: "+pres.getAfiliado().getNombre());
         System.out.println("Fecha del prestamo: "+pres.getFecha());
         System.out.println("Multa: "+pres.getMulta());
     }
