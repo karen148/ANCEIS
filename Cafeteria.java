@@ -17,13 +17,15 @@ import java.io.Serializable;
 public class Cafeteria implements Serializable
 {
     // instance variables - replace the example below with your own
-    private static ArrayList<Producto> productos = new ArrayList<Producto>();  ;
+    public static ArrayList<Producto> productos = new ArrayList<Producto>();  ;
     
     /**
      * Constructor for objects of class 
      */
     public Cafeteria()
     {
+        Producto nuevoproducto = new Producto("Glletas", "Glletas", 10, 10, 10);
+       productos.add(nuevoproducto);
      
     }
 
