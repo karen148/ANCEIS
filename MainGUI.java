@@ -194,10 +194,13 @@ public class MainGUI extends Application {
         TableColumn<Producto, String> quantityColumn = new TableColumn<>("Cantidad");
         quantityColumn.setMinWidth(100);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        
         Cafeteria cafeteria = new Cafeteria();
+        
         table = new TableView<>();
-        table.setItems(ControllerGUI.getProductos());
         table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
+        
+        table.setItems(ControllerGUI.getProductos());
         return table;
     }
 
