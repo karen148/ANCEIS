@@ -46,7 +46,7 @@ public class Producto implements Serializable
         return preciocompra;
     }
     
-     public int getpventa(){
+     public int getPrecioventa(){
         return precioventa;
     }
     

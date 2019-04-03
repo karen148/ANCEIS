@@ -243,7 +243,7 @@ public class MainGUI extends Application {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
         //Price column
-        TableColumn<Producto, String> priceColumn = new TableColumn<>("Precio");
+        TableColumn<Producto, String> priceColumn = new TableColumn<>("Precio Venta");
         priceColumn.setMinWidth(100);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("precioventa"));
 

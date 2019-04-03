@@ -44,7 +44,7 @@ public class Cafeteria implements Serializable
             String aux2 = productos.get(i).getNombre();
             int cant = productos.get(i).getCantidad();
             int pcompra = productos.get(i).getpcompra();
-            int pventa = productos.get(i).getpventa();
+            int pventa = productos.get(i).getPrecioventa();
             if(aux2.equals(nombre))
             {
                 System.out.println(aux2);
@@ -93,7 +93,7 @@ public class Cafeteria implements Serializable
     public static void registrarVenta(String nombre, int cantidad){
         Producto prod = buscarProducto(nombre);
         prod.setCantidad(-cantidad);
-        Ganancias.SumarGanancia(prod.getpventa());
+        Ganancias.SumarGanancia(prod.getPrecioventa());
     }
     /**
      * Elimina un producto de la coleccion de acuerdo a la clave que ingrese el usuario.
@@ -121,7 +121,7 @@ public class Cafeteria implements Serializable
     public void imprimirProducto(Producto pd){
         System.out.println("Nombre: "+pd.getNombre());
         System.out.println("Precio compra: "+pd.getpcompra());
-        System.out.println("Precio venta: "+pd.getpventa());
+        System.out.println("Precio venta: "+pd.getPrecioventa());
         System.out.println("Cantidad: "+pd.getCantidad());
         System.out.println("\n");
     }
