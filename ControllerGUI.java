@@ -105,4 +105,18 @@ public class ControllerGUI
     ObservableList<Afiliado> afiliados = FXCollections.observableArrayList(Afiliaciones.afiliados);
     return afiliados;
    }
+   
+   //Eliminar afiliado
+   public static void eliminarAfi(String cod){
+       Afiliaciones.eliminarAfiliado(cod);
+    }
+    
+   //Consultar casillero
+   public static void consultarAfi(){
+       for (int i=0;i< Afiliaciones.casilleros.length;i++){
+           if(Afiliaciones.casilleros[i] == null){
+                System.out.println(i);
+            }
+        }
+    }
 }

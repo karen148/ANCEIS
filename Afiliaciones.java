@@ -12,7 +12,7 @@ public class Afiliaciones implements Serializable
     // instance variables - replace the example below with your own
     public static ArrayList<Afiliado> afiliados = new ArrayList<Afiliado>();
     public static ArrayList<Afiliado> afiliadosantiguos = new ArrayList<Afiliado>();
-    private static Afiliado[] casilleros = new Afiliado[20];
+    public static Afiliado[] casilleros = new Afiliado[20];
     private static final long serialVersionUID = -5715181748092453099L;
     
     public Afiliaciones(){
@@ -39,7 +39,7 @@ public class Afiliaciones implements Serializable
      * Encuentra y elimina el afiliado de acuerdo al codigo ingresada por el usuario.
      * @param  codigo del afiliado.
      */
-    public void eliminarAfiliado(String cod){
+    public static void eliminarAfiliado(String cod){
         Afiliado afiliado = buscarAfiliado(cod);
         if(afiliado!=null){
             int index = afiliados.indexOf(afiliado);
