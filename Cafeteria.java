@@ -18,16 +18,16 @@ public class Cafeteria implements Serializable
 {
     // instance variables - replace the example below with your own
     public static ArrayList<Producto> productos = new ArrayList<Producto>();  ;
-    
+    private static final long serialVersionUID = 2238513166108926925L;
     /**
      * Constructor for objects of class 
      */
     public Cafeteria()
     {
-       // productos.add(new Producto("Glletas", "Glletas", 10, 10, 10));
-       // productos.add(new Producto("Glletas1", "Glletas", 10, 10, 10));
-       // productos.add(new Producto("Glletas2", "Glletas", 10, 10, 10));
-       // productos.add(new Producto("Glletas3", "Glletas", 10, 10, 10));
+       productos.add(new Producto("Glletas", 10, 10, 10));
+       productos.add(new Producto("alletas1", 10, 10, 10));
+       productos.add(new Producto("clletas2", 10, 10, 10));
+       productos.add(new Producto("clletas3", 10, 10, 10));
     }
 
     /**
@@ -35,7 +35,7 @@ public class Cafeteria implements Serializable
      * @param  clave que va a ser buscada
      * @return El producto que es encontrado en la colección. 
      */
-    public void consultarProducto(String nombre)//String codigo, 
+    public static void consultarProducto(String nombre)//String codigo, 
    {
        if(productos.size()!=0){
         for(int i=0; i<productos.size(); i++)
@@ -80,7 +80,7 @@ public class Cafeteria implements Serializable
      * Registra un producto de acuerdo a los parametros que ingrese el usuario y lo guarda en la coleccion de productos.
      * @param  atributos del producto. 
      */
-   public void registrarProducto(String nombre, int preciocompra , int precioventa , int cantidad){ 
+   public static void registrarProducto(String nombre, int preciocompra , int precioventa , int cantidad){ 
        
        Producto nuevoproducto = new Producto(nombre,preciocompra,precioventa,cantidad);
        productos.add(nuevoproducto);

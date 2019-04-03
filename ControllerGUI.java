@@ -15,6 +15,8 @@ public class ControllerGUI
    public static Afiliaciones afiliaciones = ReadObject.leerAfiliaciones();
    public static Libreria libreria = ReadObject.leerLibrerias();
    
+   
+   
    public static void leerBase(){
       cafeteria = ReadObject.leerCafeteria(); 
       afiliaciones = ReadObject.leerAfiliaciones(); 
@@ -33,7 +35,7 @@ public class ControllerGUI
    
    //Parar registrar el producto
    public static void registrarPro(String nombre,int preciocompra,int precioventa,int cantidad){
-       cafeteria.registrarProducto(nombre,cantidad,preciocompra,precioventa);
+       Cafeteria.registrarProducto(nombre,cantidad,preciocompra,precioventa);
    }
     
    //Para modificar la información del producto
