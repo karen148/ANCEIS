@@ -4,26 +4,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.text.Text;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.RowConstraints;
 import javafx.collections.transformation.FilteredList;
-import javafx.scene.layout.StackPane;
 
 public class MainGUI extends Application {
 
@@ -39,7 +30,10 @@ public class MainGUI extends Application {
     private Text state = new Text();
     private Button registrarVenta;
     private Button registrarProducto;
+    private Button eliminarProducto;
     private StackPane productoValores;
+    private Scene scene;
+    private BorderPane borderPane = new BorderPane();
     
     public static void main(String[] args) {
         launch(args);
@@ -57,8 +51,6 @@ public class MainGUI extends Application {
         
         GridPane.setMargin(grid,new Insets(20,20,20,20));
         grid.getColumnConstraints().add(new ColumnConstraints(300));
-        grid.getColumnConstraints().add(new ColumnConstraints(500));
-        grid.getRowConstraints().add(new RowConstraints(200));
         grid.getRowConstraints().add(new RowConstraints(200));
         grid.setGridLinesVisible(true);
         
@@ -68,10 +60,34 @@ public class MainGUI extends Application {
         // Eliminar Producto y Registrar Venta
         
         
-
-        Scene scene = new Scene(grid);
+        borderPane.setCenter(grid);
+        makeMenuBar();
+        scene = new Scene(borderPane);
         window.setScene(scene);
         window.show();
+    }
+    public void makeMenuBar(){
+        Menu m = new Menu("Menu"); 
+  
+        // Items 
+        MenuItem m1 = new MenuItem("Cafeteria"); 
+        MenuItem m2 = new MenuItem("Afiliados"); 
+        MenuItem m3 = new MenuItem("Librería"); 
+        
+        // agregar el menu a menu items 
+        m.getItems().add(m1); 
+        m.getItems().add(m2); 
+        m.getItems().add(m3); 
+        
+        // Crear menu bar 
+        MenuBar mb = new MenuBar(); 
+  
+        //  Agregar menu a la brra del menu
+        mb.getMenus().add(m); 
+  
+        // crear VBox 
+        VBox vb = new VBox(mb);
+        borderPane.setTop(vb);
     }
     public void refresh(){
         grid.getChildren().clear();
@@ -185,6 +201,14 @@ public class MainGUI extends Application {
         StackPane layout = new StackPane();
         layout.getChildren().add(state);
         grid.add(layout,0,1,1,2);   
+    }
+    
+    /*
+     * Metodo para eliminar el producto que esté seleccionado en la tabla
+     */
+    public void eliminarProducto(Producto producto){
+        ControllerGUI.eliminarPro(producto.getNombre());
+        refresh();
     }
 
     
@@ -319,8 +343,17 @@ public class MainGUI extends Application {
             }
         });
         options.getChildren().add(registrarProducto);
+        eliminarProducto = new Button("Eliminar producto");
+        eliminarProducto.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Producto producto = table.getSelectionModel().getSelectedItem();
+                eliminarProducto(producto);
+            }
+        });
+        options.getChildren().add(eliminarProducto);
         
-        options.setSpacing(50);
+        options.setSpacing(30);
         options.setAlignment(Pos.CENTER);
         options.setMinWidth(100);
         options.setMinHeight(200);
