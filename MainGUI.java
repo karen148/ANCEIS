@@ -35,7 +35,7 @@ public class MainGUI extends Application {
     private Scene scene;
     private BorderPane borderPane = new BorderPane();
     private Text ganancias;
-    private StackPane layout = new StackPane(state);
+    private StackPane layout;
 
   
     
@@ -48,6 +48,8 @@ public class MainGUI extends Application {
         
         window = primaryStage;
         window.setTitle("Cafeteria - ANCEIS");
+        
+        
         // Creamos una grilla donde van a ir nuestros componentes,
         // la tabla, los botones, la barra de busqueda y un campo que se muestra
         // con las opciones de registrar y eliminar producto.
@@ -97,8 +99,6 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         makeRight();
         makeLeft();
-        layout.getChildren().add(state);
-        grid.add(layout,0,1,1,2);
     }
     
     public void makeLeft(){
@@ -234,8 +234,10 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         refresh();
         state.setText("La venta se realizó correctamente");
-        ganancias.setText(""+Ganancias.TotalGanancia);
+        layout = new StackPane();
         layout.getChildren().add(state);
+        ganancias.setText(""+Ganancias.TotalGanancia);
+
         grid.add(layout,0,1,1,2);
     }
     
@@ -254,6 +256,7 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         refresh();
         state.setText("El producto se agregó correctamente");
+        layout = new StackPane();
         layout.getChildren().add(state);
         grid.add(layout,0,1,1,2);   
     }
