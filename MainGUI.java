@@ -34,6 +34,10 @@ public class MainGUI extends Application {
     private StackPane productoValores;
     private Scene scene;
     private BorderPane borderPane = new BorderPane();
+    private Text ganancias;
+    private StackPane layout = new StackPane(state);
+
+  
     
     public static void main(String[] args) {
         launch(args);
@@ -67,7 +71,7 @@ public class MainGUI extends Application {
         window.show();
     }
     public void makeMenuBar(){
-        Menu m = new Menu("Menu"); 
+        Menu m = new Menu("Inventario"); 
   
         // Items 
         MenuItem m1 = new MenuItem("Cafeteria"); 
@@ -93,7 +97,6 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         makeRight();
         makeLeft();
-        StackPane layout = new StackPane();
         layout.getChildren().add(state);
         grid.add(layout,0,1,1,2);
     }
@@ -110,11 +113,45 @@ public class MainGUI extends Application {
         table = makeTable();
         derecha.getChildren().add(table);
         //crea barra de busqueda y lo agrega al VBOX
-        makeSearchField();
-        derecha.getChildren().add(barrabusqueda);
+        GridPane bottomGrid = makeSearchField();
+        derecha.getChildren().add(bottomGrid);
         //agrega el VBox al grid pane, en la columna 1 y ocupando 2 filas
         grid.add(derecha,1,0,1,2);
     
+    }
+    
+    /*
+     * Retorna el componente de la barra de busqueda.
+     */
+    public GridPane makeSearchField(){
+        FilteredList<Producto> flProduct = new FilteredList(ControllerGUI.getProductos(), p -> true);//Pass the data to a filtered list
+        table.setItems(flProduct);//Set the table's items using the filtered list
+
+        TextField searchField = new TextField();
+        searchField.setPromptText("Search here!");
+        searchField.setOnKeyReleased(keyEvent ->{
+            flProduct.setPredicate(p -> p.getNombre().toLowerCase().contains(searchField.getText().toLowerCase().trim()));//filter table by first name
+        });
+        
+        GridPane bottomGrid = new GridPane();
+        
+        Text buscar = new Text("Buscar");
+        barrabusqueda = new HBox(buscar,searchField);
+        barrabusqueda.setSpacing(10);
+        barrabusqueda.setAlignment(Pos.CENTER_LEFT);
+        bottomGrid.add(barrabusqueda,0,0);
+        
+        Text gananciasLabel = new Text("GANANCIAS");
+        ganancias = new Text();
+        ganancias.setText(""+Ganancias.TotalGanancia);
+        HBox barraGanancias= new HBox(gananciasLabel,ganancias);
+        barraGanancias.setSpacing(10);
+        barraGanancias.setAlignment(Pos.CENTER_RIGHT);
+        bottomGrid.add(barraGanancias, 1, 0);
+        grid.setGridLinesVisible(true);
+        
+        
+        return bottomGrid;
     }
     
     public void definirVenta(Producto producto){
@@ -138,12 +175,28 @@ public class MainGUI extends Application {
                 }
         }); 
         
+        Text priceLabel = new Text("PRECIO");
+        Text priceField = new Text();
+        
         Button aceptarVenta = new Button("Registrar");
         aceptarVenta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                registrarVenta(producto);
+                if(Integer.parseInt(cantProduct.getText())< producto.getCantidad()){
+                    registrarVenta(producto);
+                }
+                else{
+                    priceField.setText("Debe ingresar una cantidad valida");
+                }
             }
+        });
+
+        
+        // Metodo del campo cantProductque asgina el precio de la compra precio*cantidad
+        // a la etiqueda priceField
+        cantProduct.setOnKeyReleased(keyEvent ->{
+            int c = cantProduct.getText().equals("")  ? 0 : Integer.parseInt(cantProduct.getText());
+            priceField.setText(""+producto.getPrecioventa()*c);
         });
         
         StackPane stack = new StackPane();
@@ -161,7 +214,10 @@ public class MainGUI extends Application {
         options.add(cantLabel, 0, 1); 
         options.add(cantProduct, 1, 1); 
         
-        options.add(stack, 0, 2, 2, 1); 
+        options.add(priceLabel,0,2);
+        options.add(priceField,1,2);
+        
+        options.add(stack, 0, 3, 2, 1); 
 
         options.setPrefSize(300, 300);
         GridPane.setMargin(options, new Insets(0,50,0,40));
@@ -178,7 +234,7 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         refresh();
         state.setText("La venta se realizó correctamente");
-        StackPane layout = new StackPane();
+        ganancias.setText(""+Ganancias.TotalGanancia);
         layout.getChildren().add(state);
         grid.add(layout,0,1,1,2);
     }
@@ -198,7 +254,6 @@ public class MainGUI extends Application {
         grid.getChildren().clear();
         refresh();
         state.setText("El producto se agregó correctamente");
-        StackPane layout = new StackPane();
         layout.getChildren().add(state);
         grid.add(layout,0,1,1,2);   
     }
@@ -212,24 +267,8 @@ public class MainGUI extends Application {
     }
 
     
-    /*
-     * Retorna el componente de la barra de busqueda.
-     */
-    public void makeSearchField(){
-        FilteredList<Producto> flProduct = new FilteredList(ControllerGUI.getProductos(), p -> true);//Pass the data to a filtered list
-        table.setItems(flProduct);//Set the table's items using the filtered list
-
-        TextField searchField = new TextField();
-        searchField.setPromptText("Search here!");
-        searchField.setOnKeyReleased(keyEvent ->{
-            flProduct.setPredicate(p -> p.getNombre().toLowerCase().contains(searchField.getText().toLowerCase().trim()));//filter table by first name
-        });
-        
-        Text buscar = new Text("Buscar");
-        barrabusqueda = new HBox(buscar,searchField);
-        barrabusqueda.setSpacing(10);
-        barrabusqueda.setAlignment(Pos.CENTER);
-    }
+    
+    
     /*
      * Crea los campos para solicitar los valores del producto, para luego crearlo.
      */
@@ -322,14 +361,19 @@ public class MainGUI extends Application {
     }
     
     public VBox makeOptions(){
+        state = new Text();
         options = new VBox();
         registrarVenta = new Button("Registrar venta");
         registrarVenta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 Producto producto = table.getSelectionModel().getSelectedItem();
-                refresh();
-                definirVenta(producto);
+                if(producto != null){
+                    refresh();
+                    definirVenta(producto);
+                }else{
+                }
+               
             }
         });
         options.getChildren().add(registrarVenta);
@@ -338,6 +382,7 @@ public class MainGUI extends Application {
         registrarProducto.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+
                 refresh();
                 askProductValues();
             }
@@ -348,7 +393,11 @@ public class MainGUI extends Application {
             @Override
             public void handle(ActionEvent event) {
                 Producto producto = table.getSelectionModel().getSelectedItem();
-                eliminarProducto(producto);
+                if(producto!=null){
+                    eliminarProducto(producto);
+                }else{
+                }
+                
             }
         });
         options.getChildren().add(eliminarProducto);
@@ -364,17 +413,17 @@ public class MainGUI extends Application {
     
         //Name column
         TableColumn<Producto, String> nameColumn = new TableColumn<>("Producto");
-        nameColumn.setMinWidth(200);
+        nameColumn.setMinWidth(150);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
         //Price column
         TableColumn<Producto, String> priceColumn = new TableColumn<>("Precio Venta");
-        priceColumn.setMinWidth(200);
+        priceColumn.setMinWidth(150);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("precioventa"));
 
         //Quantity column
         TableColumn<Producto, String> quantityColumn = new TableColumn<>("Cantidad");
-        quantityColumn.setMinWidth(100);
+        quantityColumn.setMinWidth(150);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
                 
         table = new TableView<>();

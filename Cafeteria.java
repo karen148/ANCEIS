@@ -93,7 +93,7 @@ public class Cafeteria implements Serializable
     public static void registrarVenta(String nombre, int cantidad){
         Producto prod = buscarProducto(nombre);
         prod.setCantidad(-cantidad);
-        Ganancias.SumarGanancia(prod.getPrecioventa());
+        Ganancias.SumarGanancia(cantidad*prod.getPrecioventa());
     }
     /**
      * Elimina un producto de la coleccion de acuerdo a la clave que ingrese el usuario.

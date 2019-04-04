@@ -30,4 +30,5 @@ public class Ganancias
        System.out.println("Ganancias: "+TotalGanancia);
 
     }
+
 }
