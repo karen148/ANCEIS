@@ -54,12 +54,13 @@ public class MainGUI extends Application {
         // la tabla, los botones, la barra de busqueda y un campo que se muestra
         // con las opciones de registrar y eliminar producto.
         grid = new GridPane();
+        
         GridPane.setMargin(grid,new Insets(20,20,20,20));
         grid.getColumnConstraints().add(new ColumnConstraints(300));
         grid.getColumnConstraints().add(new ColumnConstraints(500));
         grid.getRowConstraints().add(new RowConstraints(200));
         grid.getRowConstraints().add(new RowConstraints(200));
-        
+        grid.setGridLinesVisible(true);
         
         makeRight();
         makeLeft();
@@ -72,11 +73,20 @@ public class MainGUI extends Application {
         window.setScene(scene);
         window.show();
     }
+    public void refresh(){
+        grid.getChildren().clear();
+        makeRight();
+        makeLeft();
+        StackPane layout = new StackPane();
+        layout.getChildren().add(state);
+        grid.add(layout,0,1,1,2);
+    }
     
     public void makeLeft(){
         options = makeOptions();
         grid.add(options,0,0);
     }
+    
     public void makeRight(){
          // VBox para la tabla ya la barra de busqueda
         VBox derecha = new VBox();
@@ -90,8 +100,9 @@ public class MainGUI extends Application {
         grid.add(derecha,1,0,1,2);
     
     }
-    public void definirVenta(){
-        Producto producto = table.getSelectionModel().getSelectedItem();
+    
+    public void definirVenta(Producto producto){
+
         // Borra el contenido del label state
         state.setText("");
         // Etiqueta para el nombre
@@ -115,9 +126,10 @@ public class MainGUI extends Application {
         aceptarVenta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                registrarVenta();
+                registrarVenta(producto);
             }
         });
+        
         StackPane stack = new StackPane();
         stack.getChildren().add(aceptarVenta);
         
@@ -136,13 +148,23 @@ public class MainGUI extends Application {
         options.add(stack, 0, 2, 2, 1); 
 
         options.setPrefSize(300, 300);
-        GridPane.setMargin(options, new Insets(0,0,0,40));
+        GridPane.setMargin(options, new Insets(0,50,0,40));
         grid.add(options,0,1);
         
         
     }
-    
-    public void registrarVenta(){
+
+    public void registrarVenta(Producto producto){
+
+        String nombre = producto.getNombre();
+        int cantidad = Integer.parseInt(cantProduct.getText());
+        ControllerGUI.registrarVen(nombre,cantidad);
+        grid.getChildren().clear();
+        refresh();
+        state.setText("La venta se realizó correctamente");
+        StackPane layout = new StackPane();
+        layout.getChildren().add(state);
+        grid.add(layout,0,1,1,2);
     }
     
     /*
@@ -158,8 +180,7 @@ public class MainGUI extends Application {
         int cantidad = Integer.parseInt(cantProduct.getText());
         ControllerGUI.registrarPro(nombre, preciocompra, precioventa, cantidad);
         grid.getChildren().clear();
-        makeRight();
-        makeLeft();
+        refresh();
         state.setText("El producto se agregó correctamente");
         StackPane layout = new StackPane();
         layout.getChildren().add(state);
@@ -282,15 +303,18 @@ public class MainGUI extends Application {
         registrarVenta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                definirVenta();
+                Producto producto = table.getSelectionModel().getSelectedItem();
+                refresh();
+                definirVenta(producto);
             }
         });
-        
         options.getChildren().add(registrarVenta);
+        
         registrarProducto= new Button("Registrar producto");
         registrarProducto.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                refresh();
                 askProductValues();
             }
         });
@@ -312,7 +336,7 @@ public class MainGUI extends Application {
 
         //Price column
         TableColumn<Producto, String> priceColumn = new TableColumn<>("Precio Venta");
-        priceColumn.setMinWidth(100);
+        priceColumn.setMinWidth(200);
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("precioventa"));
 
         //Quantity column
