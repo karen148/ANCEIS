@@ -20,59 +20,43 @@ public class WriterObject
    }
    
    private static void guardarCafeteria(Cafeteria cafeteria){
-     try{
-       FileOutputStream fos = new FileOutputStream( "cafeteria.obj", false );
-       do{
-           try {
+     try {
+           FileOutputStream fos = new FileOutputStream("cafeteria.obj",false);
            ObjectOutputStream oos = new ObjectOutputStream( fos );
-           oos.writeObject(cafeteria);   
+           oos.writeObject(cafeteria); 
+           System.out.println("Exito writing");
            oos.close();
-          }
-          catch(Exception e){
+       }
+       catch(Exception e){
            System.out.println("El registro de cafeteria no se ha completado");
-         }
-       }while(false);
-     }
-     catch(Exception e){
-         e.printStackTrace();
-     }
-    }
+       } 
+   }
+    
+    
    
    private static void guardarAfiliado(Afiliaciones afiliaciones){
       try {
-           FileOutputStream fos = new FileOutputStream( "afiliaciones.obj", false );
-           do{
-               try{
-                   ObjectOutputStream oos = new ObjectOutputStream( fos );
-                   oos.writeObject(afiliaciones);   
-                   oos.close();
-               }
-               catch(Exception e){
-                  System.out.println("El registro de afiliaciones no se ha completado"); 
-               }
-            }while(false);
+           FileOutputStream fos = new FileOutputStream("afiliaciones.obj",false);
+           ObjectOutputStream oos = new ObjectOutputStream( fos );
+           oos.writeObject(afiliaciones); 
+           System.out.println("Exito writing");
+           oos.close();
        }
        catch(Exception e){
-           e.printStackTrace();
+           System.out.println("El registro de afiliaciones no se ha completado");
        } 
    }
    
    private static void guardarLireria(Libreria libreria){
       try {
-           FileOutputStream fos = new FileOutputStream( "libreria.obj", false );
-           do{
-               try{
-                   ObjectOutputStream oos = new ObjectOutputStream( fos );
-                   oos.writeObject(libreria);   
-                   oos.close();
-               }
-               catch(Exception e){
-                   System.out.println("El registro de afiliaciones no se ha completado");
-               }
-            }while(false);
+           FileOutputStream fos = new FileOutputStream("libreria.obj",false);
+           ObjectOutputStream oos = new ObjectOutputStream( fos );
+           oos.writeObject(libreria); 
+           System.out.println("Exito writing");
+           oos.close();
        }
        catch(Exception e){
-           e.printStackTrace();
-       } 
+           System.out.println("El registro de libreria no se ha completado");
+       }
    }
 }

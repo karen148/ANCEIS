@@ -11,10 +11,10 @@ import javafx.collections.FXCollections;
 
 public class ControllerGUI
 {
-   public static Cafeteria cafeteria = ReadObject.leerCafeteria();
-   public static Afiliaciones afiliaciones = ReadObject.leerAfiliaciones();
-   public static Libreria libreria = ReadObject.leerLibrerias();
- 
+   public static Cafeteria cafeteria = new Cafeteria();
+   public static Afiliaciones afiliaciones = new Afiliaciones();
+   public static Libreria libreria = new Libreria();
+   
    public static void guardarBase(){
        WriterObject.guardar(cafeteria,afiliaciones,libreria);
    }
@@ -23,92 +23,103 @@ public class ControllerGUI
       cafeteria = ReadObject.leerCafeteria(); 
       afiliaciones = ReadObject.leerAfiliaciones(); 
       libreria = ReadObject.leerLibrerias();
-   }
+   } 
      
    //Para mostrar los datos de los productos en la tabla 
    public static ObservableList<Producto> getProductos(){
-        ObservableList<Producto> productos = FXCollections.observableArrayList(Cafeteria.productos);
+        ObservableList<Producto> productos = FXCollections.observableArrayList(cafeteria.getProductos());
         return productos;
    }
    
    //Parar registrar el producto
    public static void registrarPro(String nombre,int preciocompra,int precioventa,int cantidad){
-       Cafeteria.registrarProducto(nombre,preciocompra,precioventa,cantidad);
+       cafeteria.registrarProducto(nombre,preciocompra,precioventa,cantidad);
+       guardarBase();
    }
     
    //Para modificar la información del producto
    public static void modificarProducto(String nombre, int preciocompra, int precioventa, int cantidad){
-       if(Cafeteria.buscarProducto(nombre).equals(nombre)){
-           Cafeteria.buscarProducto(nombre).setNombre(nombre);
-           Cafeteria.buscarProducto(nombre).setCantidad(cantidad);
-           Cafeteria.buscarProducto(nombre).setpventa(precioventa);
-           Cafeteria.buscarProducto(nombre).setpcompra(preciocompra);
+       if(cafeteria.buscarProducto(nombre).equals(nombre)){
+           cafeteria.buscarProducto(nombre).setNombre(nombre);
+           cafeteria.buscarProducto(nombre).setCantidad(cantidad);
+           cafeteria.buscarProducto(nombre).setpventa(precioventa);
+           cafeteria.buscarProducto(nombre).setpcompra(preciocompra);
         }else{
             System.out.println("El producto no existe");
         }   
+        guardarBase();
    }
    
    //Para eliminar producto
    public static void eliminarPro(String nombre){
-       Cafeteria.eliminarProducto(nombre);
+       cafeteria.eliminarProducto(nombre);
+       guardarBase();
     }
    
    //Registrar venta
    public static void registrarVen(String nombre, int cantidad){
-       Cafeteria.registrarVenta(nombre,cantidad);
+       cafeteria.registrarVenta(nombre,cantidad);
+       guardarBase();
     }
     
    //Registro de libreria
    public static void registrarLib(String titulo, String autor, String edicion, String editorial){
-       Libreria.registrarLibro(titulo,autor,edicion,editorial);
-    }
+       libreria.registrarLibro(titulo,autor,edicion,editorial);
+       guardarBase();
+   }
     
    //Listar libros
    public static ObservableList<Libro> getLibreria(){
-    ObservableList<Libro> libros = FXCollections.observableArrayList(Libreria.libros);
+    ObservableList<Libro> libros = FXCollections.observableArrayList(libreria.getLibros());
     return libros;
    }
 
    //Eliminar libros
    public static void eliminarLib(String titulo){
-       Libreria.eliminarLibro(titulo);
+       libreria.eliminarLibro(titulo);
+       guardarBase();
     }
     
    // Solicitar prestamos
    public static void solicitarPres(String cod, String titulo){
-       Libreria.solicitarPrestamo(cod,titulo);
+       libreria.solicitarPrestamo(cod,titulo);
+       guardarBase();
     }
     
    //Pagar multa
    public static void pagarMul(String cod, String titulo){
-       Libreria.pagarMulta(cod,titulo);
+       libreria.pagarMulta(cod,titulo);
+       guardarBase();
     }
     
    //Consultar prestamo
    public static void consultarPres(String cod, String titulo){
-       Libreria.consultarPrestamo(cod,titulo);
+       libreria.consultarPrestamo(cod,titulo);
+       guardarBase();
     }
     
    //Listar Prestamos
    public static ObservableList<Prestamo> getPrestamos(){
-    ObservableList<Prestamo> prestamos = FXCollections.observableArrayList(Libreria.prestamos);
+    ObservableList<Prestamo> prestamos = FXCollections.observableArrayList(libreria.getPrestamo());
     return prestamos;
    }
    
    //Registra afiliacion
    public static void registrarAfi(String nombre, String codigo, String correo, String telefono){
-       Afiliaciones.registrarAfiliado(nombre,codigo,correo,telefono);
+       afiliaciones.registrarAfiliado(nombre,codigo,correo,telefono);
+       guardarBase();
     }
    
    // Listar Afiliados
    public static ObservableList<Afiliado> getAfiliados(){
-    ObservableList<Afiliado> afiliados = FXCollections.observableArrayList(Afiliaciones.afiliados);
+    ObservableList<Afiliado> afiliados = FXCollections.observableArrayList(afiliaciones.getAfiliados());
     return afiliados;
    }
    
    //Eliminar afiliado
    public static void eliminarAfi(String cod){
-       Afiliaciones.eliminarAfiliado(cod);
+       afiliaciones.eliminarAfiliado(cod);
+       guardarBase();
     }
     
    //Consultar casillero
@@ -119,4 +130,5 @@ public class ControllerGUI
             }
         }
     }
+    
 }

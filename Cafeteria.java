@@ -17,25 +17,30 @@ import java.io.Serializable;
 public class Cafeteria implements Serializable
 {
     // instance variables - replace the example below with your own
-    public static ArrayList<Producto> productos = new ArrayList<Producto>();  ;
-    private static final long serialVersionUID = 2238513166108926925L;
+    private ArrayList<Producto> productos;
+    // private static final long serialVersionUID = 2238513166108926925L;
     /**
      * Constructor for objects of class 
      */
     public Cafeteria()
     {
-       productos.add(new Producto("Glletas", 10, 10, 10));
-       productos.add(new Producto("alletas1", 10, 10, 10));
-       productos.add(new Producto("clletas2", 10, 10, 10));
-       productos.add(new Producto("clletas3", 10, 10, 10));
+       productos = new ArrayList<Producto>();
+        // productos.add(new Producto("Glletas", 10, 10, 10));
+       // productos.add(new Producto("alletas1", 10, 10, 10));
+       // productos.add(new Producto("clletas2", 10, 10, 10));
+       // productos.add(new Producto("clletas3", 10, 10, 10));
     }
-
+    
+    public ArrayList<Producto> getProductos(){
+       return productos;
+    }
+    
     /**
      * Encuentra y muestra el producto de acuerdo a la clave ingresada por el usuario.
      * @param  clave que va a ser buscada
      * @return El producto que es encontrado en la colección. 
      */
-    public static void consultarProducto(String nombre)//String codigo, 
+    public void consultarProducto(String nombre)//String codigo, 
    {
        if(productos.size()!=0){
         for(int i=0; i<productos.size(); i++)
@@ -64,7 +69,7 @@ public class Cafeteria implements Serializable
      
     }
     
-    public static Producto buscarProducto(String nombre){
+    public Producto buscarProducto(String nombre){
         for(Producto p : productos){
             String aux = p.getNombre();
             if(aux.equals(nombre))
@@ -80,8 +85,7 @@ public class Cafeteria implements Serializable
      * Registra un producto de acuerdo a los parametros que ingrese el usuario y lo guarda en la coleccion de productos.
      * @param  atributos del producto. 
      */
-   public static void registrarProducto(String nombre, int preciocompra , int precioventa , int cantidad){ 
-       
+   public void registrarProducto(String nombre, int preciocompra , int precioventa , int cantidad){ 
        Producto nuevoproducto = new Producto(nombre,preciocompra,precioventa,cantidad);
        productos.add(nuevoproducto);
    }
@@ -90,7 +94,7 @@ public class Cafeteria implements Serializable
      * Registra la venta de un producto y suma la ganancia de la venta al atributo 'ganancia' de la clase 'Ganancias'.
      * @param  Producto que va a ser vendido. 
      */
-    public static void registrarVenta(String nombre, int cantidad){
+    public void registrarVenta(String nombre, int cantidad){
         Producto prod = buscarProducto(nombre);
         prod.setCantidad(-cantidad);
         Ganancias.SumarGanancia(cantidad*prod.getPrecioventa());
@@ -99,7 +103,7 @@ public class Cafeteria implements Serializable
      * Elimina un producto de la coleccion de acuerdo a la clave que ingrese el usuario.
      * @param  Clave del producto que va a ser eliminado. 
      */
-    public static void eliminarProducto(String nombre){
+    public void eliminarProducto(String nombre){
         Producto p = buscarProducto(nombre);
         if(p != null){
             int index = productos.indexOf(p);
