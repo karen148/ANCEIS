@@ -22,7 +22,10 @@ public class ReadObject
            FileInputStream fis = new FileInputStream("cafeteria.obj");
            ObjectInputStream ois = new ObjectInputStream( fis );
            try{
+              while(true){ 
               cafeteria = (Cafeteria)ois.readObject();
+              System.out.println("Leyendo");
+            }
             }
            catch(Exception e)
            {e.printStackTrace();}
@@ -39,7 +42,10 @@ public class ReadObject
        FileInputStream fis = new FileInputStream( "afiliaciones.obj" );
        ObjectInputStream ois = new ObjectInputStream( fis );
        try{
-          afiliacion = (Afiliaciones)ois.readObject();
+            while(true){ 
+              afiliacion = (Afiliaciones)ois.readObject();
+              System.out.println("Leyendo");
+            }
         }
        catch(Exception e)
        {e.printStackTrace();}
@@ -56,7 +62,10 @@ public class ReadObject
        FileInputStream fis = new FileInputStream( "libreria.obj" );
        ObjectInputStream ois = new ObjectInputStream( fis );
        try{
-          libreria = (Libreria)ois.readObject();
+          while(true){ 
+              libreria = (Libreria)ois.readObject();
+              System.out.println("Leyendo");
+            }
         }
        catch(Exception e)
        {e.printStackTrace();}

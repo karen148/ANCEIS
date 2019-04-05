@@ -13,7 +13,7 @@
         private ArrayList<Afiliado> afiliados;
         private ArrayList<Afiliado> afiliadosantiguos;
         public static Afiliado[] casilleros = new Afiliado[20];
-        // private static final long serialVersionUID = -5715181748092453099L;
+        public static final long serialVersionUID = -5715181748092453099L;
         
         public Afiliaciones(){
             afiliados = new ArrayList<Afiliado>();

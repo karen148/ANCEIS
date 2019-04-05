@@ -15,7 +15,7 @@ public class Libreria implements Serializable
     private ArrayList<Libro> libros;
     private ArrayList<Prestamo> prestamos;
     private Afiliaciones afiliaciones;
-    // private static final long serialVersionUID = -6247753484042383967L;
+    public static final long serialVersionUID = -6247753484042383967L;
     /**
      * Constructor for objects of class Libreria
      */
