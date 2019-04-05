@@ -182,7 +182,7 @@ public class MainGUI extends Application {
         aceptarVenta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(Integer.parseInt(cantProduct.getText())< producto.getCantidad()){
+                if(Integer.parseInt(cantProduct.getText())<= producto.getCantidad()){
                     registrarVenta(producto);
                 }
                 else{
