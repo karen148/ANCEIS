@@ -18,7 +18,7 @@ public class Cafeteria implements Serializable
 {
     // instance variables - replace the example below with your own
     private ArrayList<Producto> productos;
-    // private static final long serialVersionUID = 2238513166108926925L;
+    public static final long serialVersionUID = 2238513166108926925L;
     /**
      * Constructor for objects of class 
      */
