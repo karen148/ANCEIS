@@ -3,6 +3,7 @@ import java.io.ObjectOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.util.ArrayList;
 /**
@@ -13,12 +14,12 @@ import java.util.ArrayList;
  */
 public class ReadObject
 {
-    // instance variables - replace the example below with your ow
+    //instance variables - replace the example below with your ow
     
   public static Cafeteria leerCafeteria(){
      Cafeteria cafeteria = null;
         try{ 
-           FileInputStream fis = new FileInputStream( "cafeteria.obj" );
+           FileInputStream fis = new FileInputStream("cafeteria.obj");
            ObjectInputStream ois = new ObjectInputStream( fis );
            try{
               cafeteria = (Cafeteria)ois.readObject();
@@ -28,8 +29,8 @@ public class ReadObject
           }
        catch(Exception e){
            e.printStackTrace();
-        }  
-     return cafeteria;
+       }  
+    return cafeteria;
  }
 
  public static Afiliaciones leerAfiliaciones(){

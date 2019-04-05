@@ -12,21 +12,32 @@ import java.util.ArrayList;
 public class Libreria implements Serializable
 {
     // ArrayList que guarda todos los objetos de tipo Libro.
-    public static ArrayList<Libro> libros = new ArrayList<Libro>();
-    public static ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
-    private static final long serialVersionUID = -6247753484042383967L;
+    private ArrayList<Libro> libros;
+    private ArrayList<Prestamo> prestamos;
+    private Afiliaciones afiliaciones;
+    // private static final long serialVersionUID = -6247753484042383967L;
     /**
      * Constructor for objects of class Libreria
      */
     public Libreria(){
-      
+      libros = new ArrayList<Libro>();
+      prestamos = new ArrayList<Prestamo>();
+      afiliaciones = new Afiliaciones();
+    }
+    
+    public ArrayList<Libro> getLibros(){
+        return libros;
+    }
+    
+    public ArrayList<Prestamo> getPrestamo(){
+        return prestamos;
     }
     
     /**
      * Registra un libro con los atributos que ingrese el usuario y lo guarda en la coleccion 'libros'.
      * @param  atributos del libro. 
      */
-    public static void registrarLibro(String titulo, String autor, String edicion, String editorial){
+    public void registrarLibro(String titulo, String autor, String edicion, String editorial){
         Libro nuevolibro = new Libro(titulo,autor,edicion,editorial);
         libros.add(nuevolibro);
   
@@ -37,7 +48,7 @@ public class Libreria implements Serializable
      * @param  clave que va a ser buscada
      * @return El libro que es encontrado en la colección. 
      */
-    public static Libro consultarLibro(String titulo){
+    public Libro consultarLibro(String titulo){
         for(Libro lb: libros){
             String aux = lb.getTitulo();
             if(aux.equals(titulo)){
@@ -52,7 +63,7 @@ public class Libreria implements Serializable
      * Encuentra y elimina el libro de acuerdo a la clave ingresada por el usuario.
      * @param  clave que va a ser buscada 
      */
-    public static void eliminarLibro(String titulo){
+    public void eliminarLibro(String titulo){
         Libro libro = consultarLibro(titulo);
         if(libro!=null)
         {
@@ -70,13 +81,12 @@ public class Libreria implements Serializable
      * Crea un prestamo y lo guarda en la coleccion 'prestamos'.
      * @param  afiliado que solicita el prestamo y libro que va a ser prestado. 
      */
-    public static void solicitarPrestamo(String cod, String titulo){
-        Afiliado estudiante = Afiliaciones.buscarAfiliado(cod); 
-        if(estudiante!=null){
+    public void solicitarPrestamo(String cod, String titulo){ 
+        if(afiliaciones.buscarAfiliado(cod)!=null){
             Libro libro = consultarLibro(titulo);
             if(libro!=null){
                 if(libro.getEstado()){
-                    Prestamo prestamo = new Prestamo(estudiante,libro);
+                    Prestamo prestamo = new Prestamo(afiliaciones.buscarAfiliado(cod),libro);
                     prestamos.add(prestamo);
                     libros.get(libros.indexOf(libro)).setEstado(false);
                     System.out.println("El prestamo fue un exito");
@@ -95,7 +105,7 @@ public class Libreria implements Serializable
     }
     
     
-    public static void consultarPrestamo(String cod, String titulo){
+    public void consultarPrestamo(String cod, String titulo){
         for(Prestamo p: prestamos){
            if(p.getAfiliado().getCodigo().equals(cod) && p.getLibro().getTitulo().equals(titulo)){
                System.out.println("Titulo: "+p.getLibro().getTitulo());
@@ -120,7 +130,7 @@ public class Libreria implements Serializable
         }
     }
     
-    public static void pagarMulta(String cod, String titulo){
+    public void pagarMulta(String cod, String titulo){
         for(Prestamo p: prestamos){
            if(p.getAfiliado().getCodigo().equals("cod") && p.getLibro().getTitulo().equals("titulo")){
                p.pagarmulta();

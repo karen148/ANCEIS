@@ -20,23 +20,19 @@ public class WriterObject
    }
    
    private static void guardarCafeteria(Cafeteria cafeteria){
-     try{
-       FileOutputStream fos = new FileOutputStream( "cafeteria.obj", false );
-       do{
-           try {
+     try {
+           FileOutputStream fos = new FileOutputStream("cafeteria.obj",false);
            ObjectOutputStream oos = new ObjectOutputStream( fos );
-           oos.writeObject(cafeteria);   
+           oos.writeObject(cafeteria); 
+           System.out.println("Exito writing");
            oos.close();
-          }
-          catch(Exception e){
+       }
+       catch(Exception e){
            System.out.println("El registro de cafeteria no se ha completado");
-         }
-       }while(false);
-     }
-     catch(Exception e){
-         e.printStackTrace();
-     }
-    }
+       } 
+   }
+    
+    
    
    private static void guardarAfiliado(Afiliaciones afiliaciones){
       try {
@@ -67,7 +63,7 @@ public class WriterObject
                    oos.close();
                }
                catch(Exception e){
-                   System.out.println("El registro de afiliaciones no se ha completado");
+                   System.out.println("El registro de cafeteria no se ha completado");
                }
             }while(false);
        }

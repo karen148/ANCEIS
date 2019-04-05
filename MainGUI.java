@@ -65,7 +65,6 @@ public class MainGUI extends Application {
         // makeOptions crea y agrupa los botones de Registrar Producto,
         // Eliminar Producto y Registrar Venta
         
-        
         borderPane.setCenter(grid);
         makeMenuBar();
         scene = new Scene(borderPane);
